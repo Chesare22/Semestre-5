@@ -1,4 +1,4 @@
-package myIO;
+package myIO.input;
 import java.io.FileNotFoundException;
 
 public interface TableReader {

@@ -1,4 +1,4 @@
-package myIO;
+package myIO.input;
 
 import dataModels.Teacher;
 import java.io.FileNotFoundException;

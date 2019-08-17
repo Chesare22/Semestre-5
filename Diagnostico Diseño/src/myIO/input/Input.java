@@ -1,4 +1,4 @@
-package myIO;
+package myIO.input;
 
 import dataModels.DataModel;
 import dataModels.Student;
@@ -7,6 +7,7 @@ import dataModels.Subject;
 import java.io.FileNotFoundException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import myIO.GenericArrayCreator;
 
 public class Input {    
     private final TableReader reader = ReaderFactory.getReader();

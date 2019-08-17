@@ -1,4 +1,4 @@
-package myIO;
+package myIO.input;
 
 public class ReaderFactory {
     public static TableReader getReader(){
