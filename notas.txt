@@ -1,0 +1,4 @@
+---Complejidad ciclomática---{
+  Está basada en grafos.
+  Se calcula por cada función.
+}
