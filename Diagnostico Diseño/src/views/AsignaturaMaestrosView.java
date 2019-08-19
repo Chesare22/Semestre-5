@@ -1,7 +1,5 @@
 package views;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.table.AbstractTableModel;
 import store.Store;
 
@@ -182,7 +180,7 @@ public class AsignaturaMaestrosView extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 }
 
-private class MyTableModel extends AbstractTableModel {
+class MyTableModel extends AbstractTableModel {
     private String[] columnNames = new String [] {
                 "Cve_asig", "Nombre", "Licenciatura", "Maestro"};
     
