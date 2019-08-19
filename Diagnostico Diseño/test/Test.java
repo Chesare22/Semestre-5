@@ -1,11 +1,11 @@
 
 import dataModels.Teacher;
 import java.io.FileNotFoundException;
+import java.nio.file.FileAlreadyExistsException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import myIO.input.Input;
 import myIO.output.CSVWriter;
-import myIO.output.ExistingFileException;
 
 public class Test {
     public static void main(String[] args){
@@ -35,7 +35,7 @@ public class Test {
         CSVWriter writer = new CSVWriter();
         try {
             writer.write(table, name);
-        } catch (ExistingFileException ex) {
+        } catch (FileAlreadyExistsException ex) {
             Logger.getLogger(Test.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

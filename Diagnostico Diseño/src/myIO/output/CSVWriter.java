@@ -3,23 +3,24 @@ package myIO.output;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.FileAlreadyExistsException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class CSVWriter implements TableWriter {
 
     @Override
-    public boolean write(String[][] info, String path) throws ExistingFileException {
+    public boolean write(String[][] info, String path) throws FileAlreadyExistsException {
         return write(info, path, false);
     }
     @Override
-    public boolean write(String[][] table, String path, boolean replaceExisting) throws ExistingFileException {
+    public boolean write(String[][] table, String path, boolean replaceExisting) throws FileAlreadyExistsException {
         File file = new File(path);
         if(file.exists())
             if(replaceExisting){
                 file.delete();
             }else{
-                throw new ExistingFileException(path);
+                throw new FileAlreadyExistsException(path);
             }
         try{
             file.createNewFile();

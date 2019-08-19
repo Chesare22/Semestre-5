@@ -35,7 +35,7 @@ public class InputView extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         subjectTableModel = new javax.swing.JTable();
         okButton = new javax.swing.JButton();
-        okButton.setVisible(false);;
+        okButton.setVisible(false);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -154,6 +154,11 @@ public class InputView extends javax.swing.JFrame {
         }
 
         okButton.setText("Listo");
+        okButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                okButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -218,7 +223,7 @@ public class InputView extends javax.swing.JFrame {
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(okButton)
-                .addContainerGap(105, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         pack();
@@ -262,6 +267,15 @@ public class InputView extends javax.swing.JFrame {
         }
         showOkButtonIfReady();
     }//GEN-LAST:event_subjectsFieldActionPerformed
+
+    private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
+        this.setVisible(false);
+        AlumnosMaestrosView alumnoMaestro = new AlumnosMaestrosView();
+        AsignaturaMaestrosView asignaturaMaestro = new AsignaturaMaestrosView();
+        asignaturaMaestro.setOtherPanel(alumnoMaestro);
+        alumnoMaestro.setOtherPanel(asignaturaMaestro);
+        asignaturaMaestro.setVisible(true);
+    }//GEN-LAST:event_okButtonActionPerformed
 
     /**
      * @param args the command line arguments

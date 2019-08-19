@@ -1,11 +1,12 @@
 package myIO.output;
 
 import dataModels.DataModel;
+import java.nio.file.FileAlreadyExistsException;
 
 public class Output {
     private final TableWriter writer = WriterFactory.getWriter();
     
-    public boolean saveInTable(String path, DataModel[] data) throws ExistingFileException{
+    public boolean saveInTable(String path, DataModel[] data) throws FileAlreadyExistsException{
         String[][] info = new String[data.length][];
         for(int i=0; i<data.length; i++){
             info[i] = data[i].toArray();
