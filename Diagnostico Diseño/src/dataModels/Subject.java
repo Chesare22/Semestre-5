@@ -29,4 +29,8 @@ public class Subject extends DataModel{
         data[2] = this.licenciatura;
         return data;
     }
+    @Override
+    public String toString(){
+        return nombre + " - " + licenciatura;
+    }
 }

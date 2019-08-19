@@ -35,4 +35,8 @@ public class Student extends DataModel{
         data[4] = this.licenciatura;
         return data;
     }
+    @Override
+    public String toString(){
+        return nombres + " " + apellido1 + " " + apellido2 + " - " + licenciatura;
+    }
 }

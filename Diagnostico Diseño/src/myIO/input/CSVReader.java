@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package myIO.input;
 
 import java.io.FileReader;
@@ -19,7 +14,11 @@ public class CSVReader implements TableReader{
   @Override
   public String[][] read(String pathName, int campos) throws FileNotFoundException{
     guardarPorLineas(pathName);
-    return convertirLineasATabla(campos);
+    try{
+        return convertirLineasATabla(campos);
+    } catch(Exception ex){
+        throw new FileNotFoundException("Formato no valido");
+    }
   }
 
   private void guardarPorLineas(String nombreDelArchivo) throws FileNotFoundException{
@@ -33,12 +32,13 @@ public class CSVReader implements TableReader{
       }
     }
     catch (IOException io){
-      System.out.println("Ocurrio un error al cerrar el reader");
+      // System.out.println("Ocurrio un error al cerrar el reader");
     }
   }
 
 
-  private String[][] convertirLineasATabla(int campos){
+  private String[][] convertirLineasATabla(int campos)
+          throws Exception {
     int desface = 0;
     //Falta importar el Stack
     ArrayList<Integer> lineasInvalidas = new ArrayList<Integer>();
@@ -97,7 +97,7 @@ public class CSVReader implements TableReader{
   //Método que valida si un String cumple el formato CSV con el número específico de campos
     //Nota: Si da tiempo, mejorar esto para que use expresiones regulares
     //Esta cosa no valida si antes de abrir comillas hay una coma
-  private static boolean validarFormatoCSV(String linea, int camposDeseados){
+  private static boolean validarFormatoCSV(String linea, int camposDeseados) throws FileNotFoundException{
     int numeroDeCampos = 1;
     int cerrarComillas;
     try{
@@ -111,8 +111,7 @@ public class CSVReader implements TableReader{
           //Checo si se cerraron las comillas
           cerrarComillas = linea.indexOf('"');
           if(cerrarComillas == -1){
-            System.out.println("Hay unas comillas que no se cerraron.");
-            System.exit(0);
+            throw new FileNotFoundException("Hay unas comillas que no se cerraron");
           } else{
             linea = linea.substring(cerrarComillas);
           }

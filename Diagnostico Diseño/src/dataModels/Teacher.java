@@ -34,11 +34,6 @@ public class Teacher extends DataModel{
     }
     @Override
     public String toString(){
-        return "{"
-                + "apellido1:\"" + this.apellido1 + "\", "
-                + "apellido2:\"" + this.apellido2 + "\", "
-                + "nombres:\"" + this.nombres + "\", "
-                + "cve_empleado:\"" + this.cve_empleado + "\""
-                + "}";
+        return nombres + " " + apellido1 + " " + apellido2;
     }
 }

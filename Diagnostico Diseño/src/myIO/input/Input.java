@@ -12,19 +12,7 @@ import myIO.GenericArrayCreator;
 public class Input {    
     private final TableReader reader = ReaderFactory.getReader();
     
-    public Student[] students (String path) throws FileNotFoundException{
-        Class<Student> cls = (Class<Student>) new Student().getClass();
-        return tableToModel(path, cls);
-    }
-    public Teacher[] teachers (String path) throws FileNotFoundException{
-        Class<Teacher> cls = (Class<Teacher>) new Teacher().getClass();
-        return tableToModel(path, cls);
-    }
-    public Subject[] subjects (String path) throws FileNotFoundException{
-        Class<Subject> cls = (Class<Subject>) new Subject().getClass();
-        return tableToModel(path, cls);
-    }
-    
+    //This is the important method
     public <Model extends DataModel> Model[] tableToModel(String path, Class<Model> cls)
                 throws FileNotFoundException{
         try {
@@ -42,5 +30,19 @@ public class Input {
             Logger.getLogger(Input.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
+    }
+    
+    // These methods are optional, but made the code less verbose
+    public Student[] students (String path) throws FileNotFoundException{
+        Class<Student> cls = (Class<Student>) new Student().getClass();
+        return tableToModel(path, cls);
+    }
+    public Teacher[] teachers (String path) throws FileNotFoundException{
+        Class<Teacher> cls = (Class<Teacher>) new Teacher().getClass();
+        return tableToModel(path, cls);
+    }
+    public Subject[] subjects (String path) throws FileNotFoundException{
+        Class<Subject> cls = (Class<Subject>) new Subject().getClass();
+        return tableToModel(path, cls);
     }
 }
