@@ -4,8 +4,8 @@ import java.io.FileNotFoundException;
 import java.nio.file.FileAlreadyExistsException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import myIO.input.Input;
-import myIO.output.CSVWriter;
+import csv.input.Input;
+import csv.output.CSVWriter;
 
 public class Test {
     public static void main(String[] args){

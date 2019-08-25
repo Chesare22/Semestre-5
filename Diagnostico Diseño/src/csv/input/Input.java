@@ -1,4 +1,4 @@
-package myIO.input;
+package csv.input;
 
 import dataModels.DataModel;
 import dataModels.Student;
@@ -7,7 +7,7 @@ import dataModels.Subject;
 import java.io.FileNotFoundException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import myIO.GenericArrayCreator;
+import csv.GenericArrayCreator;
 
 public class Input {    
     private final TableReader reader = ReaderFactory.getReader();
@@ -31,7 +31,9 @@ public class Input {
             return null;
         }
     }
-    
+    public boolean loadStudents(String path){
+        
+    }
     // These methods are optional, but made the code less verbose
     public Student[] students (String path) throws FileNotFoundException{
         Class<Student> cls = (Class<Student>) new Student().getClass();
@@ -45,4 +47,5 @@ public class Input {
         Class<Subject> cls = (Class<Subject>) new Subject().getClass();
         return tableToModel(path, cls);
     }
+    
 }

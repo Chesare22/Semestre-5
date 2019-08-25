@@ -5,16 +5,14 @@ import store.Store;
 
 public class AsignaturaMaestrosView extends javax.swing.JFrame {
 
-    private AlumnosMaestrosView otherPanel;
-    private Store store = Store.getStore();
+    private final Store store = Store.getStore();
 
     /**
      * Creates new form TestFrame
      */
     public AsignaturaMaestrosView() {
         initComponents();
-        // this.setVisible(false);
-        loadData();
+        System.out.println("Soy nuevo");
     }
 
     /**
@@ -92,11 +90,9 @@ public class AsignaturaMaestrosView extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 517, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(csvButton)
-                                .addGap(44, 44, 44)
-                                .addComponent(studentsTeachersButton)
-                                .addGap(14, 14, 14))))
+                                .addGap(50, 50, 50)
+                                .addComponent(studentsTeachersButton))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(48, 48, 48)
                         .addComponent(jLabel1)))
@@ -124,17 +120,10 @@ public class AsignaturaMaestrosView extends javax.swing.JFrame {
     }//GEN-LAST:event_csvButtonActionPerformed
 
     private void studentsTeachersButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentsTeachersButtonActionPerformed
-        this.setVisible(false);
-        otherPanel.setVisible(true);
-        otherPanel.loadData();
+        AlumnosMaestrosView view = new AlumnosMaestrosView();
+        view.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_studentsTeachersButtonActionPerformed
-
-    public void loadData() {
-        System.out.println("Cargando datos");
-    }
-    public void setOtherPanel(AlumnosMaestrosView otherPanel){
-        this.otherPanel = otherPanel;
-    }
     
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

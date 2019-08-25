@@ -1,4 +1,4 @@
-package myIO.input;
+package csv.input;
 
 import java.io.FileReader;
 import java.io.BufferedReader;

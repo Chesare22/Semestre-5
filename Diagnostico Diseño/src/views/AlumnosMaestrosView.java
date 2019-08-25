@@ -1,15 +1,17 @@
 package views;
 
+import store.Store;
+
 public class AlumnosMaestrosView extends javax.swing.JFrame {
 
-    private AsignaturaMaestrosView otherPanel;
+    private final Store store = Store.getStore();
 
     /**
      * Creates new form AlumnosMaestrosView
      */
     public AlumnosMaestrosView() {
         initComponents();
-        loadData();
+        System.out.println("Soy nuevo");
     }
 
     /**
@@ -81,20 +83,19 @@ public class AlumnosMaestrosView extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(csvButton)
-                .addGap(95, 95, 95)
-                .addComponent(studentsTeachersButton)
-                .addGap(22, 22, 22))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 551, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(39, 39, 39)
-                        .addComponent(jLabel1)))
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(csvButton)
+                                .addGap(62, 62, 62)
+                                .addComponent(studentsTeachersButton))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 551, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(37, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -119,18 +120,10 @@ public class AlumnosMaestrosView extends javax.swing.JFrame {
     }//GEN-LAST:event_csvButtonActionPerformed
 
     private void studentsTeachersButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentsTeachersButtonActionPerformed
-        this.setVisible(false);
-        otherPanel.setVisible(true);
-        otherPanel.loadData();
+        AsignaturaMaestrosView view = new AsignaturaMaestrosView();
+        view.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_studentsTeachersButtonActionPerformed
-
-    public void loadData() {
-        System.out.println("Cargando datos");
-    }
-    public void setOtherPanel(AsignaturaMaestrosView otherPanel){
-        this.otherPanel = otherPanel;
-    }
-    
     /**
      * @param args the command line arguments
      */

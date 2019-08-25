@@ -1,4 +1,4 @@
-package myIO.output;
+package csv.output;
 
 import dataModels.DataModel;
 import java.nio.file.FileAlreadyExistsException;

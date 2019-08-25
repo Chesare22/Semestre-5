@@ -1,4 +1,4 @@
-package myIO.output;
+package csv.output;
 
 import java.io.File;
 import java.io.FileWriter;

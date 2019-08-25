@@ -4,7 +4,7 @@ import dataModels.Student;
 import dataModels.Subject;
 import java.io.FileNotFoundException;
 import javax.swing.JOptionPane;
-import myIO.input.Input;
+import csv.input.Input;
 import store.Store;
 
 public class InputView extends javax.swing.JFrame {
@@ -270,10 +270,7 @@ public class InputView extends javax.swing.JFrame {
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
         this.setVisible(false);
-        AlumnosMaestrosView alumnoMaestro = new AlumnosMaestrosView();
         AsignaturaMaestrosView asignaturaMaestro = new AsignaturaMaestrosView();
-        asignaturaMaestro.setOtherPanel(alumnoMaestro);
-        alumnoMaestro.setOtherPanel(asignaturaMaestro);
         asignaturaMaestro.setVisible(true);
     }//GEN-LAST:event_okButtonActionPerformed
 

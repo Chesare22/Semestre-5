@@ -1,4 +1,4 @@
-package myIO.input;
+package csv.input;
 
 public class ReaderFactory {
     public static TableReader getReader(){

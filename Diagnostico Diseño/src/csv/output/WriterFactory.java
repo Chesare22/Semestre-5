@@ -1,4 +1,4 @@
-package myIO.output;
+package csv.output;
 
 public class WriterFactory {
     public static TableWriter getWriter(){
