@@ -60,30 +60,32 @@ public class GameGui extends JFrame implements ActionListener
         pack();
         setVisible (true);//show our menu bar and shagLabel.. Yea baby Yea! Whoa.. to much java.
     }//end constructor
-     
+
+     //**************** Aristas - nodos + 2 *****************
+
     private class MyKeyHandler extends KeyAdapter //captures arrow keys movement
     {
-        public void keyPressed (KeyEvent theEvent)
+        public void keyPressed (KeyEvent theEvent) //*
        {         
-           switch (theEvent.getKeyCode())
+           switch (theEvent.getKeyCode()) //*
            {
-               case KeyEvent.VK_UP:
+               case KeyEvent.VK_UP://*
                {
                  theArc.playerMove(-1,0,scrapMatrix,fl.dimondCount());//let the Architect know we moved, along with the current matrix
                  loadMatrixGui("updateLoad");//reload the gui to show the move
-                 if (theArc.getLevel()==true)
+                 if (theArc.getLevel()==true)//*
                  {
-                    nextLevelLoad();//if the player hit an exit door, load the next level
+                    nextLevelLoad();//if the player hit an exit door, load the next level //*
                  }
                  break;
               }
-              case KeyEvent.VK_DOWN:
+              case KeyEvent.VK_DOWN://*
               {
                  theArc.playerMove(1,0,scrapMatrix,fl.dimondCount());//see above
                  loadMatrixGui("updateLoad");//see above
-                 if (theArc.getLevel()==true)//see above
+                 if (theArc.getLevel()==true)//see above  //*
                  {
-                    nextLevelLoad();//see above
+                    nextLevelLoad();//see above //*
                  }
                  break;
              }
