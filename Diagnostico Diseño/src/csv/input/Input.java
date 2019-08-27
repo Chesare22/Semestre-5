@@ -8,9 +8,11 @@ import java.io.FileNotFoundException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import csv.GenericArrayCreator;
+import store.Store;
 
 public class Input {    
     private final TableReader reader = ReaderFactory.getReader();
+    private final Store store = Store.getStore();
     
     //This is the important method
     public <Model extends DataModel> Model[] tableToModel(String path, Class<Model> cls)
@@ -32,20 +34,30 @@ public class Input {
         }
     }
     public boolean loadStudents(String path){
-        
-    }
-    // These methods are optional, but made the code less verbose
-    public Student[] students (String path) throws FileNotFoundException{
         Class<Student> cls = (Class<Student>) new Student().getClass();
-        return tableToModel(path, cls);
+        try {
+            store.setStudents(tableToModel(path, cls));
+        } catch (FileNotFoundException ex) {
+            return false;
+        }
+        return true;
     }
-    public Teacher[] teachers (String path) throws FileNotFoundException{
+    public boolean loadTeachers(String path){
         Class<Teacher> cls = (Class<Teacher>) new Teacher().getClass();
-        return tableToModel(path, cls);
+        try {
+            store.setTeachers(tableToModel(path, cls));
+        } catch (FileNotFoundException ex) {
+            return false;
+        }
+        return true;
     }
-    public Subject[] subjects (String path) throws FileNotFoundException{
+    public boolean loadSubjects(String path){
         Class<Subject> cls = (Class<Subject>) new Subject().getClass();
-        return tableToModel(path, cls);
+        try {
+            store.setSubjects(tableToModel(path, cls));
+        } catch (FileNotFoundException ex) {
+            return false;
+        }
+        return true;
     }
-    
 }

@@ -1,10 +1,10 @@
 package dataModels;
 
 public class Teacher extends DataModel{
-    public String apellido1;
-    public String apellido2;
-    public String nombres;
-    public String cve_empleado;
+    private String apellido1;
+    private String apellido2;
+    private String nombres;
+    private String cve_empleado;
     /*
     El archivo de profesores tiene este orden:
     || Cve_Empleado || Apellido 1 || Apellido 2 || Nombres ||
@@ -34,6 +34,14 @@ public class Teacher extends DataModel{
     }
     @Override
     public String toString(){
+        return nombres + " " + apellido1 + " " + apellido2;
+    }
+    // Getters
+    public String apellido1(){return apellido1;}
+    public String apellido2(){return apellido2;}
+    public String nombres(){return nombres;}
+    public String cve_empleado(){return cve_empleado;}
+    public String fullName(){
         return nombres + " " + apellido1 + " " + apellido2;
     }
 }

@@ -1,9 +1,9 @@
 package dataModels;
 
 public class Subject extends DataModel{
-    public String cve_asignatura;
-    public String nombre;
-    public String licenciatura;
+    private String cve_asignatura;
+    private String nombre;
+    private String licenciatura;
     /*
     El archivo de materias tiene este orden:
     || Cve_Asig || Nombre || Licenciatura {LIS, LCC, LIC} ||
@@ -33,4 +33,8 @@ public class Subject extends DataModel{
     public String toString(){
         return nombre + " - " + licenciatura;
     }
+    // Getters
+    public String cve_asignatura(){return cve_asignatura;}
+    public String nombre(){return nombre;}
+    public String licenciatura(){return licenciatura;}
 }

@@ -17,7 +17,6 @@ public class Store {
     private final HashMap<Student, Set<Subject>> studentsWithSubject = new HashMap<>();
     
     private Store(){}
-    
     public static Store getStore(){return store;}
     
     public void setStudents(Student[] students){this.students = students;}
@@ -26,12 +25,12 @@ public class Store {
     public Teacher[] teachers(){return teachers;}
     public Student[] students(){return students;}
     public Subject[] allSubjects(){return subjects;}
-    
-    public void boundSubjectWithTeacher(Subject subject, Teacher teacher){
-        subjectsWithTeacher.replace(subject, teacher);
-    }
     public Set<Subject> aviableSubjects(){
         return subjectsWithTeacher.keySet();
+    }
+    
+    public void boundSubjectWithTeacher(Subject subject, Teacher teacher){
+        subjectsWithTeacher.put(subject, teacher);
     }
     public void boundStudentWithSubject(Student student, Subject subject){
         if(!studentsWithSubject.containsKey(student))
@@ -42,6 +41,7 @@ public class Store {
         if(studentsWithSubject.containsKey(student)){
             Set<Subject> subjectSet = studentsWithSubject.get(student);
             subjectSet.remove(subject);
+            // Se quita al estudiante de la lista si no tiene materias cargadas
             if(subjectSet.isEmpty())
                 studentsWithSubject.remove(student);
         }
@@ -49,9 +49,18 @@ public class Store {
     public Map<Student, Set<Subject>> getStudentsWithSubject(){
         return (Map<Student, Set<Subject>>) studentsWithSubject.clone();
     }
+    public Map<Subject, Teacher> getSubjectsWithTeacher(){
+        return (Map<Subject, Teacher>) subjectsWithTeacher.clone();
+    }
     public boolean inputDataIsReady(){
         return  teachers != null &&
                 students != null &&
                 subjects != null;
+    }
+    public boolean studentsLoaded(){return students != null;}
+    public boolean teachersLoaded(){return teachers != null;}
+    public boolean subjectsLoaded(){return subjects != null;}
+    public boolean hasTeacher(Subject subject){
+        return aviableSubjects().contains(subject);
     }
 }

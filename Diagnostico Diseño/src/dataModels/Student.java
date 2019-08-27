@@ -1,11 +1,11 @@
 package dataModels;
 
 public class Student extends DataModel{
-    public String matricula;
-    public String licenciatura;
-    public String apellido1;
-    public String apellido2;
-    public String nombres;
+    private String matricula;
+    private String licenciatura;
+    private String apellido1;
+    private String apellido2;
+    private String nombres;
     /*
     El archivo de alumnos tiene este orden:
     || matrícula || Apellido1 || Apellido2 || Nombres || Licenciatura {LIS, LCC. LIC} ||
@@ -38,5 +38,14 @@ public class Student extends DataModel{
     @Override
     public String toString(){
         return nombres + " " + apellido1 + " " + apellido2 + " - " + licenciatura;
+    }
+    // Getters
+    public String matricula(){return matricula;}
+    public String licenciatura(){return licenciatura;}
+    public String apellido1(){return apellido1;}
+    public String apellido2(){return apellido2;}
+    public String nombres(){return nombres;}
+    public String fullName(){
+        return nombres + " " + apellido1 + " " + apellido2;
     }
 }
