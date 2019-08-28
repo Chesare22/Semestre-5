@@ -1,4 +1,29 @@
----Complejidad ciclomática---{
-  Está basada en grafos.
-  Se calcula por cada función.
-}
+Enlace:
+Al apretar a un enlace se llama al manejador del tipo de enlace (http, etc)
+
+Ruta: Serie de directorios separados por un /
+  Es absoluta si el URL incluye el servidor
+  Es relativa si no (RECOMENDADO)
+
+Tablas: EN HTML están formadas por filas y celdas
+  <TABLE>
+  <TR> //table row
+  <TD> //table data
+  <TH> //table header
+
+  Ejemplo:
+  <TABLE>
+    <TR>
+      <TH>Columna 1</TH>
+      <TH>Columna 2</TH>
+    </TR>
+    <TR>
+      <TD>Celda 1</TD>
+      <TD>Celda 2</TD>
+    </TR>
+  </TABLE>
+
+  Investigar atributos de cada etiqueta.
+  ROWSPAN es para fusionar una celda con las de abajo
+  COLSPAN es para fusionar celdas dentro de una misma fila
+  Se pueden combinar :o
