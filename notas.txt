@@ -27,3 +27,30 @@ Tablas: EN HTML están formadas por filas y celdas
   ROWSPAN es para fusionar una celda con las de abajo
   COLSPAN es para fusionar celdas dentro de una misma fila
   Se pueden combinar :o
+
+Formato de imágenes:
+  .bmp Bit Map.
+    Cada pixel de la imagen está guardado en uno o más bytes (Dependiendo de la calidad)
+  .gif
+    Colores limitados (256) en una sola foto.
+    Compresión no degenerativa.
+    No es útil para imágenes con muchos colores.
+  .jpg
+    Soporta muchos colores en una sola imagen.
+    Compresión degenerativa.
+  .png
+    Versión mejorada del jpg
+  svg
+    Usa vectores
+
+  Recursos:
+    https://imagecompressor.com/
+    https://squoosh.app/
+
+Formularios:
+  No pueden haber formularios anidados
+  Etiqueta: <form></form>
+  Atributos:
+    action:
+      Aquí se define la ruta donde se hará una acción
+    method: La acción a realizar
