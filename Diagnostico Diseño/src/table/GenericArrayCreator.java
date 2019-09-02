@@ -1,4 +1,4 @@
-package csv;
+package table;
 
 import java.lang.reflect.Array;
 

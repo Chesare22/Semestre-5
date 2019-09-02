@@ -1,7 +1,7 @@
 package views;
 
-import csv.input.Input;
-import csv.output.Printer;
+import table.input.Input;
+import table.output.Printer;
 import dataModels.Student;
 import dataModels.Subject;
 import dataModels.Teacher;

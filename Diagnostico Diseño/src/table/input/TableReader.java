@@ -1,4 +1,4 @@
-package csv.input;
+package table.input;
 import java.io.FileNotFoundException;
 
 public interface TableReader {

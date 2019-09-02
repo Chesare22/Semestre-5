@@ -1,4 +1,4 @@
-package csv.output;
+package table.output;
 
 import java.nio.file.FileAlreadyExistsException;
 

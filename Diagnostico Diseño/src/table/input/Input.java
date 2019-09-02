@@ -1,4 +1,4 @@
-package csv.input;
+package table.input;
 
 import dataModels.DataModel;
 import dataModels.Student;
@@ -7,7 +7,7 @@ import dataModels.Subject;
 import java.io.FileNotFoundException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import csv.GenericArrayCreator;
+import table.GenericArrayCreator;
 import store.Store;
 
 public class Input {    

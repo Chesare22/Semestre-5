@@ -1,4 +1,4 @@
-package csv.output;
+package table.output;
 
 import dataModels.Student;
 import dataModels.Subject;

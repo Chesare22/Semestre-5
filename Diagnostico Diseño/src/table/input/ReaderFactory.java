@@ -1,7 +1,7 @@
-package csv.input;
+package table.input;
 
 public class ReaderFactory {
     public static TableReader getReader(){
-        return new CSVReader();
+        return new XLSXReader();
     }
 }

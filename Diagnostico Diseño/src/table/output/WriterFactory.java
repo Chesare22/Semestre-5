@@ -1,4 +1,4 @@
-package csv.output;
+package table.output;
 
 public class WriterFactory {
     public static TableWriter getWriter(){
