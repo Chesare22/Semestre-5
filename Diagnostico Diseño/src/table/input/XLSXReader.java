@@ -17,7 +17,8 @@ public class XLSXReader implements TableReader{
 
     @Override
     public String[][] read(String path, int fields) throws FileNotFoundException {
-        FileInputStream fileInput = new FileInputStream(new File(path));
+        File file = new File(path);
+        FileInputStream fileInput = new FileInputStream(file);
         XSSFWorkbook workbook;
         try {
             workbook = new XSSFWorkbook(fileInput);
@@ -39,6 +40,7 @@ public class XLSXReader implements TableReader{
                     throw new FileNotFoundException();
                 }
             }
+            data.add(row);
         }
         
         return data.toArray(new String[data.size()][]);
