@@ -1,0 +1,90 @@
+<html>
+  <body>
+    <table
+      width="100%"
+      height="100%"
+      cellspacing="0"
+      cellpadding="0"
+    >
+      <!-- Borde superior -->
+      <tr>
+        <td
+          bgcolor="#000080"
+          height="20%"
+        >
+          <font face="verdana" size="10" color="white">
+            Predial
+          </font>
+        </td>
+      </tr>
+      <!-- Contenedor para el formulario -->
+      <tr>
+        <td align="center">
+          <font face="verdana" size="6">
+            Consulta y pago de predial
+          </font>
+          <br><br>
+          <form
+            method="GET"
+            action="demo.php"
+          >
+            <table>
+              <!-- Checkboxes -->
+              <tr>
+                <td align="center">
+                  <font face="verdana">
+                    Ubica tu predio por: 
+                  </font>
+                  <input
+                    type="radio"
+                    name="seleccion"
+                    value="direccion"
+                    checked
+                  >
+                  <font face="verdana" color="grey">
+                    Direcci&oacute;n
+                  </font>
+                  <input
+                    type="radio"
+                    name="seleccion"
+                    value="seccion_y_manzana"
+                  >
+                  <font face="verdana" color="grey">
+                    Secci&oacute;n y manzana
+                  </font>
+                  <input
+                    type="radio"
+                    name="seleccion"
+                    value="tablaje"
+                  >
+                  <font face="verdana" color="grey">
+                    Tablaje
+                  </font>
+                  <input
+                    type="radio"
+                    name="seleccion"
+                    value="folio"
+                  >
+                  <font face="verdana" color="grey">
+                    Folio
+                  </font><br>
+                </td>
+              </tr>
+              <!-- Cuadros de texto -->
+              <tr>
+                <td align="center">
+                  <input type="text" name="calle" value="Calle">
+                  <input type="text" name="calle-letra" value="Letra">
+                  <input type="text" name="numero" value="N&uacute;mero">
+                  <input type="text" name="numero-letra" value="Letra">
+                  <!-- Botón submit -->
+                  <input type="submit" value="Buscar">
+                </td>                
+              </tr>
+            </table>
+          </form>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>
