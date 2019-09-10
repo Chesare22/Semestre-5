@@ -78,53 +78,46 @@ public class FileLoader {
             else {
                 GameMatrix[i1][j1] = "W";
             }
-
             return GameMatrix;
         }
      
-     public int getMatrixSizeColumn()//return the matrixsize-column
-     {
-         return column;
-     }
+    public int getMatrixSizeColumn() {
+        return column;
+    }
+
+    public int getMatrixSizeRow() {
+        return row;
+    }
      
-     public int getMatrixSizeRow()//return the matrix size-row
-     {
-         return row;
-         
-     }
-     
-   public int ExitXCord() //return the X cordinates for the Exit
-   {
-      return exitXCord;
-   }
+    public int ExitXCord() {
+        return exitXCord;
+    }
    
-   public int ExitYCord()//return the Y cordinates for the Exit
-   {
-      return exitYCord; 
-   }
+    public int ExitYCord() {
+        return exitYCord; 
+    }
    
-   public int dimondCount()
-   {
+   public int dimondCount() {
        int totalDimonds=0;
         for (int i = 0; i < GameMatrix.length; i++){
             for(int j = 0; j < GameMatrix[i].length; j++){
-            if(GameMatrix[i][j].equals("D") || GameMatrix[i][j].equals("H"))
-                totalDimonds+=1;
-        }}//end double for loop
+                if(GameMatrix[i][j].equals("D") || GameMatrix[i][j].equals("H")){
+                    totalDimonds += 1;
+                }
+            }
+        }
      return totalDimonds;//return the total number of dimonds in the level
     }
     
-    private class gameFileError extends RuntimeException //if a level is loaded with ether two players or two exits throw this
-    {
-        public gameFileError()
-        {
+    private class gameFileError extends RuntimeException { //if a level is loaded with ether two players or two exits throw this
+        public gameFileError() {
             JFrame frame = new JFrame("Alert");
             JOptionPane.showMessageDialog(frame, "Your maze file ether had more than one player, or more than one exit.");
-         }
+        }
     }//end inner class
     
-private int exitXCord=0;
-private int exitYCord=0;;
+private int exitXCord = 0;
+private int exitYCord = 0;;
 private String[][] GameMatrix;
 private int column;
 private int row;
