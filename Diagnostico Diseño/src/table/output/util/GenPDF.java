@@ -1,3 +1,5 @@
+package table.output.util;
+
 public abstract class GenPDF{
   protected String[] encabezado;
   protected String nombre;

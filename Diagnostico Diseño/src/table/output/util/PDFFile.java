@@ -1,3 +1,5 @@
+package table.output.util;
+
 import com.qoppa.pdfWriter.PDFDocument;
 import com.qoppa.pdfWriter.PDFPage;
 
@@ -16,22 +18,21 @@ import java.util.Arrays;
 
 public class PDFFile extends GenPDF {
   // Manejador de documentos PDF.
-  private static final PDFDocument PDF_DOCUMENT = new PDFDocument();
+  private final PDFDocument pdfDocument = new PDFDocument();
   // Diposición de las páginas.
   // (Hoja tamñano carta con márgenes de aprox. 2.5 cm).
   private static final double MARGIN = 1 * 72;
-  private static final double PAGE_WIDTH = 8.5 * 72;
-  private static final double PAGE_HEIGHT = 11 * 72;
+  private static final double PAGE_HEIGHT = 8.5 * 72;
+  private static final double PAGE_WIDTH = 11 * 72;
   // Fuente.
   private static final Font FONT = new Font("Times New Roman", Font.PLAIN, 11);
   // Formato de páginas.
   private PageFormat PAGE_FORMAT;
-
   // Altura de escritura en la página.
   private double currentY;
   // Objeto para escritura.
   private Graphics2D graphics2D;
-
+  
   public PDFFile(String nombre){
     super(nombre);
     this.prepararEscritura();
@@ -58,24 +59,20 @@ public class PDFFile extends GenPDF {
   @Override
   public void createPDF(String[][] info){
     try {
-        Files.deleteIfExists(Paths.get(nombre));
-      }
-      catch(IOException exception) {
-        exception.printStackTrace();
-        System.exit(1);
-      }
-      // Título del documento
-      this.writeln("REPORTE DE CALIFICACIONES", Font.BOLD);
-      this.writeln(""); // Espacio en blanco.
+      Files.deleteIfExists(Paths.get(nombre));
+    }
+    catch(IOException exception) {
+      exception.printStackTrace();
+    }
+    // Título del documento
+    this.writeln(nombre, Font.BOLD);
+    this.writeln(""); // Espacio en blanco.
 
-      // Encabezado de la tabla.
-      String[] headers = {"MATRICULA", "ALUMNO", "CALIFICACION"};
+    // Escribir tabla.
+    this.writeTable(info, encabezado);
 
-      // Escribir tabla.
-      this.writeTable(info, headers);
-
-      // Guardar PDF.
-      this.save();
+    // Guardar PDF.
+    this.save();
   }
 
 
@@ -116,7 +113,8 @@ public class PDFFile extends GenPDF {
 
     double[] offsets = new double[headers.length];
     Arrays.fill(offsets, 0);
-
+    
+    //Draw table
     for(int i = 0; i < headers.length; i++) {
       offsets[i] = offsets[i] > fontMetrics.bytesWidth(headers[i].getBytes(), 0, headers[i].getBytes().length)
         ? offsets[i] : fontMetrics.bytesWidth(headers[i].getBytes(), 0, headers[i].getBytes().length);
@@ -124,7 +122,8 @@ public class PDFFile extends GenPDF {
         offsets[i] = offsets[i] > fontMetrics.bytesWidth(content[j][i].getBytes(), 0, content[j][i].getBytes().length)
         ? offsets[i] : fontMetrics.bytesWidth(content[j][i].getBytes(), 0, content[j][i].getBytes().length);
     }
-
+    
+    //Fill data
     graphics2D.setFont(new Font(FONT.getName(), Font.ITALIC, FONT.getSize()));
     // Escribir encabezado de la tabla.
     for(int i = 0; i < headers.length; i++) {
@@ -153,18 +152,17 @@ public class PDFFile extends GenPDF {
 
     try {
       Files.deleteIfExists(Paths.get(nombre));
-      PDF_DOCUMENT.saveDocument(new FileOutputStream(nombre));
+      pdfDocument.saveDocument(new FileOutputStream(nombre));
     }
     catch(IOException e) {
       successStatus = false;
     }
-
     return successStatus;
   }
 
   protected void addNewPage() {
-    PDFPage pDFPage = PDF_DOCUMENT.createPage(PAGE_FORMAT);
-    PDF_DOCUMENT.addPage(pDFPage);
+    PDFPage pDFPage = pdfDocument.createPage(PAGE_FORMAT);
+    pdfDocument.addPage(pDFPage);
     graphics2D = pDFPage.createGraphics();
     graphics2D.setFont(FONT);
     currentY = MARGIN;

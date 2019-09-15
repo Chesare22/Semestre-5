@@ -47,5 +47,8 @@ public class CSVWriter implements TableWriter {
         return row;
     }
 
+    @Override
+    public void setHeader(String[] header) {}
+
     
 }

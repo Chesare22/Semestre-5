@@ -1,6 +1,6 @@
 package dataModels;
 
-public class Teacher extends DataModel{
+public class Teacher implements DataModel{
     private String apellido1;
     private String apellido2;
     private String nombres;
@@ -9,9 +9,7 @@ public class Teacher extends DataModel{
     El archivo de profesores tiene este orden:
     || Cve_Empleado || Apellido 1 || Apellido 2 || Nombres ||
     */
-    public Teacher(){
-        this.expectedColumns = 4;
-    }
+    public Teacher(){}
     public Teacher(String[] data){
         this();
         this.readFromArray(data);
@@ -35,6 +33,15 @@ public class Teacher extends DataModel{
     @Override
     public String toString(){
         return nombres + " " + apellido1 + " " + apellido2;
+    }
+    @Override
+    public int expectedColumns() {
+        return 4;
+    }
+    @Override
+    public String[] header(){
+        String[] header = {"cve_empleado", "apellido 1", "apellido 2", "nombres"};
+        return header;
     }
     // Getters
     public String apellido1(){return apellido1;}

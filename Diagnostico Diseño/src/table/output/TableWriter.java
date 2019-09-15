@@ -9,4 +9,5 @@ public interface TableWriter {
     public abstract boolean write
             (String[][] info, String path)
                     throws FileAlreadyExistsException;
+    public abstract void setHeader(String[] header);
 }

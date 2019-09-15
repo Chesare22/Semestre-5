@@ -1,7 +1,5 @@
 package views;
 
-import table.input.Input;
-import table.output.Printer;
 import dataModels.Student;
 import dataModels.Subject;
 import dataModels.Teacher;
@@ -13,7 +11,7 @@ public class Views {
     private final Store store = Store.getStore();
     private final Scanner reader = new Scanner(System.in);
     private String commandInput;
-    private final Input fileInput = new Input();
+    //private final Input fileInput = new Input();
     
     public Views(){
         System.out.println("Bienvenido a la carga de maestros, alumnos y materias."
@@ -30,7 +28,7 @@ public class Views {
             if(!store.studentsLoaded()){
                 System.out.println("Ingrese el nombre del archivo con los estudiantes");
                 commandInput = reader.nextLine();
-                if(fileInput.loadStudents(commandInput)){
+                if(store.loadStudents(commandInput)){
                     System.out.println("Se guardaron los estudiantes");
                 }else{
                     System.out.println("No se guardaron los estudiantes");
@@ -39,7 +37,7 @@ public class Views {
             if(!store.teachersLoaded()){
                 System.out.println("Ingrese el nombre del archivo con los maestros");
                 commandInput = reader.nextLine();
-                if(fileInput.loadTeachers(commandInput)){
+                if(store.loadTeachers(commandInput)){
                     System.out.println("Se guardaron los maestros");
                 }else{
                     System.out.println("No se guardaron los maestros");
@@ -48,7 +46,7 @@ public class Views {
             if(!store.subjectsLoaded()){
                 System.out.println("Ingrese el nombre del archivo con las materias");
                 commandInput = reader.nextLine();
-                if(fileInput.loadSubjects(commandInput)){
+                if(store.loadSubjects(commandInput)){
                     System.out.println("Se guardaron las materias");
                 }else{
                     System.out.println("No se guardaron las materias");
@@ -98,12 +96,11 @@ public class Views {
     }
     public void save(){
         boolean fail;
-        Printer printer = new Printer();
         do{
             System.out.println("Ingrese el nombre del archivo que tendra a los alumnos con sus materias");
             commandInput = reader.nextLine();
             try {
-                printer.printStudentSubjects(commandInput);
+                store.printStudentSubjects(commandInput);
                 fail = false;
                 System.out.println("Success!");
             } catch (FileAlreadyExistsException ex) {
@@ -116,7 +113,7 @@ public class Views {
             System.out.println("Ingrese el nombre del archivo que tendra a las materias con su profesor");
             commandInput = reader.nextLine();
             try {
-                printer.printTeacherSubjects(commandInput);
+                store.printTeacherSubjects(commandInput);
                 fail = false;
                 System.out.println("Success!");
             } catch (FileAlreadyExistsException ex) {
