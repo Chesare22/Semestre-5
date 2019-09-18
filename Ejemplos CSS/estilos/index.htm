@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Documento sin título</title>
+<!--El menú de opciones deben ser botones que cambien su apariencia YASTA
+La tabla debe tener un borde exterior de color
+Los controles del formulario deben presentar un comportamiento diferente al habitual
+Si se imprime la página, no se presenta el formulario YASTA-->
+<style>
+
+#menu {
+	list-style:none;
+	padding:0;
+	margin:0;
+}
+
+#menu li a {
+	display:block;
+	width:123px;
+	height:34px;
+  margin:5px;
+}
+
+#menu li a#inicio {
+	background-image:url(imagenes/inicio_s.jpg)
+}
+
+#menu li a#inicio:hover {
+	background-image:url(imagenes/inicio.jpg)
+}
+
+#menu li a#catalogo {
+	background-image:url(imagenes/catalogo_s.jpg)
+}
+
+#menu li a#catalogo:hover {
+	background-image:url(imagenes/catalogo.jpg)
+}
+
+#menu li a#organizacion {
+	background-image:url(imagenes/organizacion_s.jpg)
+}
+
+#menu li a#organizacion:hover {
+	background-image:url(imagenes/organizacion.jpg)
+}
+
+.ocultar {
+	visibility:hidden;
+}
+
+table {
+  border: 1px solid green;
+}
+
+@media print {
+  .hide-on-print {
+    visibility: hidden;
+  }
+}
+
+</style>
+
+</head>
+
+<body style="font-family: Arial, Helvetica, sans-serif">
+<p><img src="imagenes/titulo_pagina.jpg" width="564" height="112" /></p>
+<ul id="menu">
+  <li><a id="inicio" href="#"><span class="ocultar">Inicio</span></a></li>
+  <li><a id="catalogo" href="#"><span class="ocultar">Catálogo</span></a></li>
+  <li><a id="organizacion" href="#"><span class="ocultar">Organización</span></a></li>
+</ul>
+<table id="productos">
+  <tr>
+    <th>Producto</th>
+    <th>Descripción</th>
+    <td>Precio</td>
+  </tr>
+  <tr>
+    <td>0456</td>
+    <td>Juego de sala provenzal en color castaño claro con cojines color beige</td>
+    <td>$25,000</td>
+  </tr>
+  <tr>
+    <td>2531</td>
+    <td>Comedor con seis sillas para exteriores en acero inoxidable color rojo, incluye sombrilla marinera</td>
+    <td>$14,560</td>
+  </tr>
+  <tr>
+    <td>3472</td>
+    <td>Juego de 5 maceteros de terracota de 20, 30, 40, 50 y 60 cm de diametro</td>
+    <td>$3,000</td>
+  </tr>
+</table>
+<p>Para más informes puede usted contactarnos via <a href="mailto:correo@correo.web">correo electrónico</a> o bien visitandonos en la siguiente dirección:</p>
+<p>Calle 56 x 57 #402 Col. Centro<br />
+Teléfono: 9999567840 </p>
+<p class="hide-on-print">También puede llenar este formulario para sus comentarios:<br />
+</p>
+<form class="hide-on-print">
+  <p>Nombre:</p><input type="text" name="nombre">
+  <p>Correo:</p><input type="text" name="correo">
+  <p>Comentario:</p><input type="text" name="comentario">
+</form>
+
+<p>&nbsp;</p>
+</body>
+</html>

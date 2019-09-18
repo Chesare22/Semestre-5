@@ -1,0 +1,4 @@
+@import url("ruta.css") <medio>;
+
+El medio nos dice dónde se va a visualizar.
+Puede ser 
