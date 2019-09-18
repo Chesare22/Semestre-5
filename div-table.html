@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<body>
+  <div class="table">
+    <div class="left top header"></div>
+    <div class="top header"></div>
+    <div class="right top header"></div>
+    <div class="left"></div>
+    <div></div>
+    <div class="right"></div>
+    <div class="left double-column"></div>
+    <div class="right"></div>
+    <div class="container-2x2">
+      <div class="left"></div>
+      <div></div>
+      <div class="left bottom"></div>
+      <div class="bottom"></div>
+    </div>
+    <div class="double-row right bottom"></div>
+  </div>
+</body>
+
+<style>
+body{
+  margin: 0;
+}
+
+.table{
+  margin-top:10%;
+  margin-left: 30%;
+  width: 500px;
+}
+
+.table div{
+  width: 145px;
+  height: 20px;
+  padding: 5px;
+  border: 2px solid black;
+  background-color: gainsboro;
+  float:left;
+}
+
+.table div.left{
+  border-left-width: 4px;
+}
+.table div.top{
+  border-top-width: 4px;
+}
+.table div.right{
+  border-right-width: 4px;
+}
+.table div.bottom{
+  border-bottom-width: 4px;
+}
+
+.table div.header{
+  background-color: grey;
+}
+
+.table div.double-column{
+  width: 304px
+}
+div.container-2x2{
+  width: 320px;
+  padding: 0;
+  border: 0;
+  margin: 0;
+}
+.table div.double-row{
+  height: 54px;
+}
+</style>
