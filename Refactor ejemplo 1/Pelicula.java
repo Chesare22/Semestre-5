@@ -24,4 +24,25 @@ public class Pelicula {
 		return _titulo;
 	}
 
+	public double monto(int diasRentado){
+		double monto = 0;
+		switch (_precio) {
+			case NORMALES:
+				monto += 2;
+				if (diasRentado > 2)
+					monto += (diasRentado - 2) * 1.5;
+				break;
+			case ESTRENOS:
+				monto += diasRentado * 3;
+				break;
+			case NINIOS:
+				monto += 1.5;
+				if (diasRentado > 3)
+					monto += (diasRentado - 3) * 1.5;
+				break;
+		}
+
+		return monto;
+	}
+
 }
