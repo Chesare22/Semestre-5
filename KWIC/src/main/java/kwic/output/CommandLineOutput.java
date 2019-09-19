@@ -1,6 +1,6 @@
 package kwic.output;
 
-class CommandLineOutput implements Output{
+class CommandLineOutput extends Output{
 
     @Override
     public void write(String[][] matrix) {

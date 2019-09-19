@@ -1,6 +1,6 @@
 package kwic.sorter;
 
-class BubbleSorter implements Sorter{
+class BubbleSorter extends Sorter{
     private String[][] matrix;
     
     @Override

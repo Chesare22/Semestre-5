@@ -3,7 +3,7 @@ package kwic.combiner;
 import static com.google.common.collect.Lists.newArrayList;
 import java.util.List;
 
-class ListCombiner implements Combiner{
+class ListCombiner extends Combiner{
 
     @Override
     public String[][] combine(String[] line) {

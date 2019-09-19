@@ -2,7 +2,7 @@ package kwic.input;
 
 import java.util.Scanner;
 
-class CommandLineInput implements Input{
+class CommandLineInput extends Input{
     @Override
     public String read(){
         System.out.println("Ingrese una sentencia:");
