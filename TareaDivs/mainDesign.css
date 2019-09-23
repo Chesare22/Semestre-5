@@ -1,0 +1,17 @@
+.leftBar{
+  height:590px;
+  border-left:100px green solid;
+}
+
+.menu{
+  font-style: normal;
+  color: green;
+  font-size: 14px;
+  text-align: center;
+}
+
+#footer-content {
+  border-left: 1000px black solid;
+  padding: 13px 20px;
+  background-image: url(figuras2/barra.gif);
+}
