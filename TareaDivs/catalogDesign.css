@@ -1,16 +1,27 @@
 body{
   background-color: #92f75b;
+  margin: 0;
+  font-family: "Times New Roman", Times, serif;
 }
 
+/* Esto es una mala práctica.
+Todo ponlo en clases, nunca personalices todo el componente */
 header{
   background-color: white;
+  height: 108px;
 }
 
-h1{
+header .text {
+  vertical-align: sub;
+}
+
+/* Siempre trata de ser lo más precisa posible. Eso es cool */
+header h1{
   font-style: normal;
   color: green;
   font-size: 18px;
-  text-align: left;
+  text-align: bottom;
+  padding-top: 80px;
 }
 
 table{
@@ -29,10 +40,65 @@ font{
   color: #2d4f23;
   font-size: 14px;
   text-align: center;
+  padding: 10px;
 }
 
 #footer-content {
-  border-left: 1000px black solid;
-  padding: 13px 20px;
-  background-image: url(figuras2/barra.gif);
+  width: 100%;
+  text-align: right;
+  background: black;
+  
+}
+
+div.catalogo {
+  text-align: center;
+  padding-left: 35%;
+  padding-right: 35%;
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+div.catalogo article.producto {
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+}
+
+div.catalogo article.producto div.texto {
+  font-style: monospace;
+  font-size: 20px;
+  color: green;
+  text-align: center;
+  width: 50%;
+  margin: 25px;
+  margin-right: 0;
+  line-height: 150%;
+}
+
+div.catalogo article.producto div.texto div.contenedor-imagen {
+  position: relative;
+  right: 0;
+}
+
+@media only screen and (max-width: 900px) {
+  body {
+    background-color: cadetblue;
+  }
+
+  div.menu {
+    color: azure;
+  }
+
+  div.catalogo {
+    width: 80%;
+    padding: 0;
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+
+  div.catalogo article.producto div.texto {
+    font-size: 150%;
+  }
 }
