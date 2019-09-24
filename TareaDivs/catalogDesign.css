@@ -82,13 +82,14 @@ div.catalogo article.producto div.texto div.contenedor-imagen {
   right: 0;
 }
 
-@media only screen and (max-width: 900px) {
+@media screen and (max-width: 900px) {
   body {
     background-color: cadetblue;
   }
 
   div.menu {
     color: azure;
+    font-size: 150%;
   }
 
   div.catalogo {
