@@ -2,3 +2,4 @@
 */dist/
 TestData
 /KWIC/target/
+*.asta
