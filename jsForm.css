@@ -1,0 +1,39 @@
+body {
+  margin: 0;
+  background-color: mediumaquamarine;
+  font-family: Arial, Helvetica, sans-serif;
+}
+body main {
+  width: 100%;
+  margin-top: 10%;
+  text-align: center;
+}
+
+article.form-container {
+  width: 40%;
+  margin-left: 30%;
+  border: 10px solid mintcream;
+  background: mintcream;
+  border-radius: 8px;
+}
+article.form-container header {
+  margin-top: 3%;
+}
+
+form div.row {
+  display: grid;
+  grid-template-columns: 45% 45%;
+  grid-gap: 10%;
+
+  margin: 5% 15%;
+}
+
+input[type=text] {
+  padding: 12px;
+  border-radius: 5px;
+  border: 1px solid grey;
+}
+input[type=text]:focus {
+  border-color: blue;
+  outline-color: transparent;
+}
