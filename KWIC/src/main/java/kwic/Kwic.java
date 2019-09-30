@@ -4,7 +4,7 @@ import kwic.input.InputFactory;
 
 public class Kwic {
     
-    private final Layer firstLayer = InputFactory.newInput();
+    private final Filter firstLayer = InputFactory.newInput();
     
     public void run(String[] args){
         firstLayer.doLayersChain(args);

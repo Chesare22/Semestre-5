@@ -1,18 +1,19 @@
 package kwic.input;
 
-import kwic.Layer;
+import kwic.Filter;
 import kwic.separator.SeparatorFactory;
 
-public abstract class Input extends Layer {
-    public abstract String read();
-    
-    @Override
-    public Layer nextLayer(){
-        return SeparatorFactory.newSeparator();
-    }
-    
-    @Override
-    public Object doCurrentLayer(Object currentParam){
-        return read();
-    }
+public abstract class Input extends Filter {
+
+  public abstract String read();
+
+  @Override
+  public Filter nextLayer() {
+    return SeparatorFactory.newSeparator();
+  }
+
+  @Override
+  public Object doCurrentLayer(Object currentParam) {
+    return read();
+  }
 }
