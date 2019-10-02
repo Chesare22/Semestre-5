@@ -1,0 +1,76 @@
+<html lang="es" dir="ltr">
+
+  <head>
+    <link rel="stylesheet" href="jsForm.css">
+    <meta charset="utf-8">
+    <title>Formulario con validaciones</title>
+  </head>
+
+  <body>
+    <main>
+      <article class="form-container">
+
+        <header>Este formulario usa JavaScript</header>
+
+        <form action="https://www.google.com" method="GET" onsubmit="return validateForm(this)">
+          <div class="row">
+            <input
+              type="text"
+              name="number"
+              placeholder="Sólo números"
+              onfocus="this.select()"
+              onkeyup="validateNumbersOnly(this)"
+            >
+            <input
+              type="text"
+              name="text"
+              placeholder="Sólo texto"
+              onfocus="this.select()"
+              onkeyup="validateTextOnly(this)"
+            >
+          </div>
+          <input type="submit" value="Validar">
+        </form>
+
+      </article>
+    </main>
+  </body>
+</html>
+
+<script>
+  let i = 0;
+  function validateForm (form) {
+    let valid = true;
+    if (!form.number.value) {
+      alert('El campo de sólo números está vacío')
+      form.number.focus()
+      return false
+    }
+    if (!form.text.value) {
+      alert('El campo de sólo texto está vacío')
+      form.text.focus()
+      return false
+    }
+
+    alert('Hurra! Ambos campos de texto están bien UwU')
+    return true
+  }
+
+  function validateNumbersOnly (input) {
+    let value = input.value
+    // Removes the last index while the value is not a number
+    while(value.match(/\D/) && value.length > 0){
+      value =  value.slice(0,value.length-1)
+    }
+    input.value = value
+  }
+
+  function validateTextOnly (input) {
+    let value = input.value
+    // Removes the last index while the value is not a number
+    while (value.match(/\d/) && value.length > 0) {
+      value = value.slice(0, value.length - 1)
+    }
+    input.value = value
+  }
+</script>
