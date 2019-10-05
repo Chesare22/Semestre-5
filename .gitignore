@@ -1,5 +1,9 @@
 */build/
 */dist/
+*/target/
 TestData
-/KWIC/target/
 *.asta
+.settings
+.classpath
+.project
+*.xml
