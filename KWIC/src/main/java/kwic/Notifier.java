@@ -4,15 +4,15 @@ import java.util.ArrayList;
 
 public class Notifier {
 
-  private final ArrayList<Observer> observers = new ArrayList<>();
+  private final ArrayList<MyObserver> observers = new ArrayList<>();
 
-  public void notifyAllInstances() {
+  public void updateAll() {
     observers.forEach((observer) -> {
       observer.update();
     });
   }
 
-  public void attach(Observer observer) {
+  public void addObserver(MyObserver observer) {
     observers.add(observer);
   }
 }

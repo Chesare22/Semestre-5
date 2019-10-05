@@ -5,7 +5,7 @@ import java.util.Scanner;
 class CommandLineInput extends Input {
 
   @Override
-  public String read() {
+  public String readLine() {
     System.out.println("Ingrese una sentencia:");
 
     Scanner reader = new Scanner(System.in);

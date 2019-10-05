@@ -1,6 +1,6 @@
 package kwic;
 
-public interface Observer {
+public interface MyObserver {
 
   public void update();
 }

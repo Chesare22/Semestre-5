@@ -1,19 +1,25 @@
 package kwic.input;
 
 import kwic.Filter;
-import kwic.separator.SeparatorFactory;
+import kwic.Pipe;
 
-public abstract class Input extends Filter {
-
-  public abstract String read();
-
-  @Override
-  public Filter nextLayer() {
-    return SeparatorFactory.newSeparator();
+public abstract class Input implements Filter {
+  
+  private final Pipe nextPipe;
+  
+  public Input(Pipe nextPipe) {
+    this.nextPipe = nextPipe;
   }
 
+  public abstract String readLine();
+  
   @Override
-  public Object doCurrentLayer(Object currentParam) {
-    return read();
+  public Object doCurrent(Object param) {
+    return readLine();
+  }
+  
+  @Override
+  public Pipe getPipeToNextFilter(){
+    return nextPipe;
   }
 }
