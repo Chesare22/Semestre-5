@@ -1,0 +1,37 @@
+<html lang="es" dir="ltr">
+
+  <head>
+    <link rel="stylesheet" href="libros.css"> <!-- Hoja de estilos -->
+    <meta charset="utf-8">
+    <title>Libro</title>  <!-- Título de la pestaña -->
+  </head>
+
+  <body>
+    <main>
+      <article class="form-container">
+        <p><b>T&iacute;tulo:</b> <span id="titulo">N/A</span></p>
+        <p><b>Autor:</b> <span id="autor">N/A</span></p>
+        <p><b>Editorial:</b> <span id="editorial">N/A</span></p>
+        <p><b>Tema:</b> <span id="tema">N/A</span></p>
+        <button onclick="close_window()">Cerrar</button>
+      </article>
+    </main>
+  </body>
+
+</html>
+<script>
+  const url = new URL(window.location.href)
+
+  setInnerTextById('titulo')
+  setInnerTextById('autor')
+  setInnerTextById('editorial')
+  setInnerTextById('tema')
+
+  function setInnerTextById(id){
+    document.getElementById(id).innerText = url.searchParams.get(id)
+  }
+
+  function close_window() {
+    close()
+  }
+</script>
