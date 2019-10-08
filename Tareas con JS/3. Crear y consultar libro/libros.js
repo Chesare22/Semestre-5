@@ -11,7 +11,7 @@ function Libro(titulo, autor, editorial, tema) {
   }
 
   this.urlParams = function urlParams() {
-    return `?titulo=${this.titulo}
+    return `titulo=${this.titulo}
       &autor=${this.autor}
       &editorial=${this.editorial}
       &tema=${this.tema}`
@@ -55,7 +55,8 @@ function imprimirLibros() {
   let offset = 5
   libros.forEach((libro) => {
     offset += 15
-    window.open(`new-window.html${libro.urlParams()}`, '',
+    window.open(`new-window.html?${libro.urlParams()}`,
+      '',
       `width=270,height=240,left=${offset},top=${offset}`)
   })
 }
