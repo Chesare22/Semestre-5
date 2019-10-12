@@ -41,27 +41,27 @@
 		}
 
 		function remove() {
-				var newCookieRawData = "drop this"
-				if (document.orderform.orderboxes) {
-					for (i = 0; i < document.orderform.orderboxes.length; i++) {
-						if (document.orderform.orderboxes[i].checked == false) {
-							newCookieRawData = newCookieRawData + document.orderform.orderboxes[i].value + "xxx"
-						}
-					}
+				var newCookieRawData = 'drop this'
+				
+				let orderboxes = document.orderform.orderboxes
+				if (orderboxes) {
+					orderboxes = orderboxes instanceof RadioNodeList ? orderboxes : [orderboxes]
+					orderboxes.forEach(orderbox => {
+						newCookieRawData += orderbox.checked ? '' : `${orderbox.value}xxx`
+					});
 				}
 
-				var dropInitialization = newCookieRawData.split("drop this");
+				var dropInitialization = newCookieRawData.split('drop this')
 
-				if (dropInitialization[1] == "") {
+				if (!dropInitialization[1]) {
 				  killCookies()
 				}
-
-				if (dropInitialization[1] != "") {
-					var cleanData = dropInitialization[1];
-					document.cookie = "stuff=" + escape(cleanData);
+				else {
+					var cleanData = dropInitialization[1]
+					document.cookie = 'stuff=' + escape(cleanData)
 				}
 
-				window.location = "pagina2.htm";
+				window.location = 'pagina2.htm'
 			}
 	</script>
 </head>
