@@ -26,9 +26,7 @@
 			const shipping = [2.0, 3.0, 2.0, 5.8, 5.5, 6.0, 1.0]
 
 			function place(index) {
-				const product = products.find(({ name }) => {
-					return name === itemName[index]
-				})
+				const product = products.find(({ name }) => name === itemName[index])
 				if (product) {
 					product.increaseAmmount()
 				}

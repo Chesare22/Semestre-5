@@ -4,11 +4,6 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Par&aacute;metros enviados</title>
-		<script language="javascript">
-
-			const url = new URL(window.location.href)
-
-		</script>
 	</head>
 
 	<body>
@@ -22,6 +17,8 @@
 		</p>
 		<p>
 			<script language="javascript">
+				const url = new URL(window.location.href)
+
 				document.getElementById('texto').innerHTML = url.searchParams.get('nombre')
 				document.form1.nombre.value = url.searchParams.get('nombre')
 			</script>
