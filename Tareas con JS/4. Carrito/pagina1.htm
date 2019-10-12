@@ -5,15 +5,42 @@
 	<meta charset="utf-8">
 	<title>Agregar productos</title>
 
-  <script src="madmurphy-cookies.js"></script> <!-- Simple cookie library -->
+	<script src="madmurphy-cookies.js"></script> <!-- Simple cookie library -->
+	<script src="product.js"></script> <!-- My simple products library -->
 	<script language="javascript">
-			function place(newItem) {
-				if (!document.cookie) {
-					document.cookie = 'stuff='
-				}
-				document.cookie += escape(`${newItem}xxx`)
-				alert(document.cookie)
+
+		const products = docCookies.hasItem('products') ? objectsToProducts(JSON.parse(docCookies.getItem('products'))) : []
+		console.log(products)
+		if(!docCookies.hasItem('products')){
+			docCookies.setItem('products', '[]')
+		}
+
+		const itemName = [
+			'Ultra Widget',
+			'Deluxe Widget',
+			'Red Widget',
+			'Kaltrops',
+			'Shuriken',
+			'Mask'
+		]
+		const itemPrice = [12.0, 25.0, 20.0, 10.0, 15.0, 12.5]
+		const shipping = [2.0, 3.0, 2.0, 5.8, 5.5, 6.0, 1.0]
+
+		function place(index) {
+			const product = products.find(({ name }) => {
+				return name === itemName[index]
+			})
+			if (product) {
+				product.increaseAmmount()
 			}
+			else {
+				products.push(new Product(itemName[index], itemPrice[index], shipping[index]))
+			}
+
+			docCookies.removeItem('products')
+			docCookies.setItem('products', JSON.stringify(products))
+			alert(docCookies.getItem('products'))
+		}
 	</script>
 
 
