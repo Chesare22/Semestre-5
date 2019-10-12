@@ -1,82 +1,90 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="es" dir="ltr">
 
-<head>
-	<meta charset="utf-8">
-	<title>Editar carrito</title>
-  <script src="madmurphy-cookies.js"></script> <!-- Simple cookie library -->
-	<script src="product.js"></script> <!-- My simple products library -->
-	<script language="javascript">
+	<head>
+		<meta charset="utf-8">
+		<title>Editar carrito</title>
+		<script src="madmurphy-cookies.js"></script> <!-- Simple cookie library -->
+		<script src="product.js"></script> <!-- My simple products library -->
+		<script language="javascript">
 
-		let products = docCookies.hasItem('products') ? JSON.parse(docCookies.getItem('products')) : []
-
-		function killCookies() {
-			const killDate = new Date('January 1, 1970')
-			document.cookie = `products=[];expires=${killDate.toGMTString()}`
-			products = []
-			window.location = 'pagina2.htm'
-		}
-
-		function remove() {
-			let newCookieRawData = 'drop this'
-
-			let orderboxes = document.orderform.orderboxes
-			if (orderboxes) {
-				// Para que el forEach funcione, orderboxes debe ser un NodeList o un arreglo
-				orderboxes = orderboxes instanceof RadioNodeList ? orderboxes : [orderboxes]
-				orderboxes.forEach(orderbox => {
-					newCookieRawData += orderbox.checked ? '' : `${orderbox.value}xxx`
-				});
+			let products = docCookies.hasItem('products') ? objectsToProducts(JSON.parse(docCookies.getItem('products'))) : []
+			if (!docCookies.hasItem('products')) {
+				docCookies.setItem('products', '[]')
 			}
 
-			var dropInitialization = newCookieRawData.split('drop this')
-			if (!dropInitialization[1]) {
-				killCookies()
-			}
-			else {
-				var cleanData = dropInitialization[1]
-				document.cookie = `stuff=${escape(cleanData)}`
+			function killCookies() {
+				const killDate = new Date('January 1, 1970')
+				document.cookie = `products=[];expires=${killDate.toGMTString()}`
+				products = []
+				window.location = 'pagina2.htm'
 			}
 
-			window.location = 'pagina2.htm'
-		}
-	</script>
-</head>
+			function refresh() {
+				docCookies.removeItem('products')
+				docCookies.setItem('products', JSON.stringify(products))
+				window.location = 'pagina2.htm'
+			}
 
-<body>
-	<h4>Esta es la lista de productos que has ordenado. Para elimina los elementos marcalos y haz clic al boton de
-		remover.</h4>
-	<p>
-		<form name="orderform">
-			<script language="JavaScript">
-				if (itemNumber.length < 1) {
-					document.write('<h4>No hay elementos en el carrito. Agrega algunos utilizando el enlace</h4>')
+			function remove() {
+				let orderboxes = document.orderform.orderboxes
+				if (orderboxes) {
+					// Para que el forEach funcione, orderboxes debe ser un NodeList o un arreglo
+					orderboxes = orderboxes instanceof RadioNodeList ? orderboxes : [orderboxes]
+					orderboxes.forEach(({value, checked}) => {
+						if(checked){
+							products = products.filter(({ name }) => name !== value)
+						}
+					});
 				}
-				else {
-					let total = 0
+				refresh()
+			}
 
-					const last = itemNumber.pop()
-					itemNumber.forEach(value => {
-						document.write(`<input type="checkbox" name="orderboxes" value="${value}">`)
-						document.write(`<b>${itemName[value]}</b> &nbsp;&nbsp;`)
-						document.write(`<i>precio: $${itemPrice[value]}</i> &nbsp;&nbsp;`)
-						document.write(`envío: $${shipping[value]}<br><br>`)
-
-						total += itemPrice[value] + shipping[value]
-					})
-					itemNumber.push(last)
-
-					document.write(`Total - $${total}`)
+			function decreaseByName(name) {
+				const product = products.find(product => product.name === name)
+				product.decreaseAmmount()
+				if(product.ammount === 0) {
+					products = products.filter(product => product.name !== name)
 				}
-			</script>
-			<br><br>
-			<input type="button" onclick="remove()" value="Eliminar">
-	</p>
-	</form>
-	<p>
-		<a href="pagina1.htm">Agregar productos</a>&nbsp;&nbsp;
-		<a href="javascript:killCookies()">Vaciar carrito</a>
-	</p>Enviar datos a otra <a href="pagina3.htm?nombre=victor">forma</a>
-</body>
+				refresh()
+			}
+		</script>
+	</head>
+
+	<body>
+		<h4>Esta es la lista de productos que has ordenado. Para elimina los elementos marcalos y haz clic al boton de
+			remover.</h4>
+		<p>
+			<form name="orderform">
+				<script language="JavaScript">
+					if (products.length < 1) {
+						document.write('<h4>No hay elementos en el carrito. Agrega algunos utilizando el enlace</h4>')
+					}
+					else {
+						let total = 0
+
+						products.forEach(({ name, price, shipping, ammount }) => {
+							document.write(`<input type="checkbox" name="orderboxes" value="${name}">`)
+							document.write(`<b>${name}</b> &nbsp;&nbsp;`)
+							document.write(`<i><b>precio por producto: $${price}</b></i> &nbsp;&nbsp;`)
+							document.write(`envío: $${shipping} `)
+							document.write(`<i>cantidad de productos: ${ammount}</i> &nbsp;&nbsp;`)
+							document.write(`<a href="javascript:decreaseByName('${name}')">quitar un elemento</a><br><br>`)
+
+							total += (price + shipping) * ammount
+						})
+
+						document.write(`Total - $${total}`)
+					}
+				</script>
+				<br><br>
+				<input type="button" onclick="remove()" value="Eliminar elementos seleccionados">
+		</p>
+		</form>
+		<p>
+			<a href="pagina1.htm">Agregar productos</a>&nbsp;&nbsp;
+			<a href="javascript:killCookies()">Vaciar carrito</a>
+		</p>Enviar datos a otra <a href="pagina3.htm?nombre=victor">forma</a>
+	</body>
 
 </html>

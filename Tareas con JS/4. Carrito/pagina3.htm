@@ -1,33 +1,31 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="es" dir="ltr">
 
-<head>
-	<meta charset="utf-8">
-	<title>Par&aacute;metros enviados</title>
-	<script language="javascript">
-
-  	const url = new URL(window.location.href)
-
-		const getValue = (item) => url.searchParams.get(item)
-
-	</script>
-</head>
-
-<body>
-	<p><span id="texto"></span></p>
-	<p>
-		<form name="form1" method="get" action="pagina3.htm">
-			Nombre:
-			<input name="nombre" type="text" id="nombre" value="">
-			<input type="submit" name="Submit" value="Submit">
-		</form>
-	</p>
-	<p>
+	<head>
+		<meta charset="utf-8">
+		<title>Par&aacute;metros enviados</title>
 		<script language="javascript">
-			document.getElementById('texto').innerHTML = getValue('nombre')
-			document.form1.nombre.value = getValue('nombre')
+
+			const url = new URL(window.location.href)
+
 		</script>
-	</p>
-</body>
+	</head>
+
+	<body>
+		<p><span id="texto"></span></p>
+		<p>
+			<form name="form1" method="get" action="pagina3.htm">
+				Nombre:
+				<input name="nombre" type="text" id="nombre" value="">
+				<input type="submit" name="Submit" value="Submit">
+			</form>
+		</p>
+		<p>
+			<script language="javascript">
+				document.getElementById('texto').innerHTML = url.searchParams.get('nombre')
+				document.form1.nombre.value = url.searchParams.get('nombre')
+			</script>
+		</p>
+	</body>
 
 </html>

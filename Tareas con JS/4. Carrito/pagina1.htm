@@ -1,63 +1,62 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="es" dir="ltr">
 
-<head>
-	<meta charset="utf-8">
-	<title>Agregar productos</title>
+	<head>
+		<meta charset="utf-8">
+		<title>Agregar productos</title>
 
-	<script src="madmurphy-cookies.js"></script> <!-- Simple cookie library -->
-	<script src="product.js"></script> <!-- My simple products library -->
-	<script language="javascript">
+		<script src="madmurphy-cookies.js"></script> <!-- Simple cookie library -->
+		<script src="product.js"></script> <!-- My simple products library -->
+		<script language="javascript">
 
-		const products = docCookies.hasItem('products') ? objectsToProducts(JSON.parse(docCookies.getItem('products'))) : []
-		console.log(products)
-		if(!docCookies.hasItem('products')){
-			docCookies.setItem('products', '[]')
-		}
-
-		const itemName = [
-			'Ultra Widget',
-			'Deluxe Widget',
-			'Red Widget',
-			'Kaltrops',
-			'Shuriken',
-			'Mask'
-		]
-		const itemPrice = [12.0, 25.0, 20.0, 10.0, 15.0, 12.5]
-		const shipping = [2.0, 3.0, 2.0, 5.8, 5.5, 6.0, 1.0]
-
-		function place(index) {
-			const product = products.find(({ name }) => {
-				return name === itemName[index]
-			})
-			if (product) {
-				product.increaseAmmount()
-			}
-			else {
-				products.push(new Product(itemName[index], itemPrice[index], shipping[index]))
+			const products = docCookies.hasItem('products') ? objectsToProducts(JSON.parse(docCookies.getItem('products'))) : []
+			if(!docCookies.hasItem('products')){
+				docCookies.setItem('products', '[]')
 			}
 
-			docCookies.removeItem('products')
-			docCookies.setItem('products', JSON.stringify(products))
-			alert(docCookies.getItem('products'))
-		}
-	</script>
+			const itemName = [
+				'Ultra Widget',
+				'Deluxe Widget',  // Producto 1
+				'Red Widget',			// Producto 2
+				'Kaltrops',				// Producto 3
+				'Shuriken',				// Producto 4
+				'Mask'
+			]
+			const itemPrice = [12.0, 25.0, 20.0, 10.0, 15.0, 12.5]
+			const shipping = [2.0, 3.0, 2.0, 5.8, 5.5, 6.0, 1.0]
+
+			function place(index) {
+				const product = products.find(({ name }) => {
+					return name === itemName[index]
+				})
+				if (product) {
+					product.increaseAmmount()
+				}
+				else {
+					products.push(new Product(itemName[index], itemPrice[index], shipping[index]))
+				}
+
+				docCookies.removeItem('products')
+				docCookies.setItem('products', JSON.stringify(products))
+				alert(docCookies.getItem('products'))
+			}
+		</script>
 
 
-</head>
+	</head>
 
-<body>
-	<p>Producto 1 <a href="javascript:place(1)">agregar</a> </p>
-	<p>Producto 2 <a href="javascript:place(2)">agregar</a></p>
-	<p>Producto 3 <a href="javascript:place(3)">agregar</a></p>
-	<p>Producto 4 <a href="javascript:place(4)">agregar</a></p>
-	<p><a href="pagina2.htm">Carrito</a> </p>
-	<form name="form1" method="get" action="pagina3.htm">
-		Nombre:
-		<input name="nombre" type="text" id="nombre" value="Jorge">
-		<input type="submit" name="Submit" value="Submit">
-	</form>
-	<p>&nbsp; </p>
-</body>
+	<body>
+		<p>Producto 1 <a href="javascript:place(1)">agregar</a> </p>
+		<p>Producto 2 <a href="javascript:place(2)">agregar</a></p>
+		<p>Producto 3 <a href="javascript:place(3)">agregar</a></p>
+		<p>Producto 4 <a href="javascript:place(4)">agregar</a></p>
+		<p><a href="pagina2.htm">Carrito</a> </p>
+		<form name="form1" method="get" action="pagina3.htm">
+			Nombre:
+			<input name="nombre" type="text" id="nombre" value="Jorge">
+			<input type="submit" name="Submit" value="Submit">
+		</form>
+		<p>&nbsp; </p>
+	</body>
 
 </html>
