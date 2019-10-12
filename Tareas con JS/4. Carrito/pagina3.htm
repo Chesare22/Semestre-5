@@ -15,7 +15,7 @@
 
 			keyPairs.forEach(keyPair => {
 				const position = keyPair.indexOf('=')
-				if (position == -1) {
+				if (position === -1) {
 					return null
 				}
 				const keyname = keyPair.substring(0, position)
