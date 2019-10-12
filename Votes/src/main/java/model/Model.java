@@ -1,16 +1,16 @@
 package model;
 
 
-import controller.Notifier;
+import utilities.Notifier;
 import java.util.Arrays;
 
-public class PollingPlace {
+public class Model {
 
   private final int[] votes;
   private final Candidate[] candidates;
   private Notifier notifier = null;
 
-  public PollingPlace(String[] candidatesNames) {
+  public Model(String[] candidatesNames) {
     votes = new int[candidatesNames.length];
     Arrays.fill(votes, 0);
 
