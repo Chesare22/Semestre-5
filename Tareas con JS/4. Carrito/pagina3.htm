@@ -6,30 +6,9 @@
 	<title>Par&aacute;metros enviados</title>
 	<script language="javascript">
 
-		let queryKeys = getKeys()
+  	const url = new URL(window.location.href)
 
-		function getKeys() {
-			const keys = {}
-			const queryString = location.search.substring(1)
-			const keyPairs = queryString.split('&')
-
-			keyPairs.forEach(keyPair => {
-				const position = keyPair.indexOf('=')
-				if (position === -1) {
-					return null
-				}
-				const keyname = keyPair.substring(0, position)
-				const keyvalue = keyPair.substring(position + 1)
-				keys[keyname] = unescape(keyvalue)
-			})
-
-			return keys;
-		}
-
-		function getValue(key) {
-			return queryKeys[key] ? queryKeys[key] : ''
-		}
-
+		const getValue = (item) => url.searchParams.get(item)
 
 	</script>
 </head>
