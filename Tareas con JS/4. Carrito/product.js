@@ -1,4 +1,4 @@
-let productCount = 0
+let productsCount = 0
 
 class Product {
   constructor(name, price, shipping, ammount) {
@@ -7,8 +7,8 @@ class Product {
     this.shipping = shipping
     this.ammount = ammount >= 0 ? ammount : 1
 
-    this.id = productCount
-    productCount++
+    this.id = productsCount
+    productsCount++
   }
 
   increaseAmmount() {

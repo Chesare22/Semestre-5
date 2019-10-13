@@ -34,8 +34,9 @@
 							// Para que el forEach funcione, orderboxes debe ser un NodeList o un arreglo
 							orderboxes = orderboxes instanceof RadioNodeList ? orderboxes : [orderboxes]
 							orderboxes.forEach(({ value, checked }) => {
+								value = Number(value)
 								if (checked) {
-									products = products.filter(({ id }) => id !== Number(value))
+									products = products.filter(({ id }) => id !== value)
 								}
 							});
 						}
@@ -45,7 +46,7 @@
 						refresh()
 					}
 
-					function decreaseByProductId(id) {
+					function decreaseProductById(id) {
 						const product = products.find(product => product.id === id)
 						product.decreaseAmmount()
 
@@ -73,7 +74,7 @@
 							document.write(`<i><b>precio por producto: $${price}</b></i> &nbsp;&nbsp;`)
 							document.write(`envío: $${shipping} `)
 							document.write(`<i>cantidad de productos: ${ammount}</i> &nbsp;&nbsp;`)
-							document.write(`<a href="javascript:decreaseByProductId(${id})">quitar un elemento</a><br><br>`)
+							document.write(`<a href="javascript:decreaseProductById(${id})">quitar un elemento</a><br><br>`)
 
 							total += (price + shipping) * ammount
 						})
