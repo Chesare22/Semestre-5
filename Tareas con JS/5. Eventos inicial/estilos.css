@@ -13,3 +13,9 @@ body {
 	font-weight:bold;
 	color:#006;
 }
+
+@media print {
+	.ocultar {
+		visibility:hidden;
+	}
+}

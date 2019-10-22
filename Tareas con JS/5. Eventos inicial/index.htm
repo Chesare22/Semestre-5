@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+
+<head>
+	<meta charset="utf-8" />
+	<link href="estilos.css" rel="stylesheet" type="text/css" />
+	<title>Pendientes</title>
+</head>
+
+<body>
+	<h1 class="titulo">Lista de pendientes.</h1>
+	<div id="pendientes">
+		<p>&nbsp;</p>
+	</div>
+	<p class="ocultar">
+		<a href="#" id="imprimir">
+			<img src="imagenes/impresora.gif" width="48" height="48" border="0" align="absmiddle" title="Imprimir ventana" />
+		</a>
+		<input type="button" name="agregar" id="agregar" value="Agregar" />
+	</p>
+	</body>
+
+	<script language="javascript">
+		const pendientes = []
+		pendientes[0] = ["Título", "Fecha", "Descripción"]
+
+		function verPendientes() {
+			let cadena = "<table border>"
+
+			for (let i = 0; i < pendientes.length; i++) {
+				cadena += "<tr>"
+				cadena += "<td>" + pendientes[i][0] + "</td>"
+				cadena += "<td>" + pendientes[i][1] + "</td>"
+				cadena += "<td>" + pendientes[i][2] + "</td>"
+				cadena += "</tr>"
+			}
+			cadena += "</table>"
+			document.getElementById("pendientes").innerHTML = cadena
+		}
+
+		function verVentana(url) {
+			ventana = window.open(url, "ventana", "width=500, height=400")
+			ventana.focus()
+		}
+
+		verPendientes()
+	</script>
+</html>
