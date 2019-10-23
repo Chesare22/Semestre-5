@@ -19,16 +19,23 @@
 			<img src="imagenes/impresora.gif" width="48" height="48" border="0" align="absmiddle" title="Imprimir ventana" />
 		</a>
 		<input type="button" name="agregar" id="agregar" value="Agregar" />
+		<input type="button" name="reiniciar" id="reiniciar" value="Reiniciar" />
 	</p>
 	</body>
 
 	<script language="javascript">
 		const pendientes = docCookies.hasItem('pendientes') ?
 			JSON.parse(docCookies.getItem('pendientes')) :
-			[new Pendiente('Título', 'Fecha', 'Descripción')]
+			[]
 
 		function verPendientes () {
-			let tabla = '<table border>'
+			let tabla = `<table border>
+										<tr>
+											<td>Título</td>
+											<td>Fecha</td>
+											<td>Descripción</td>
+										</tr>`
+										
 			pendientes.forEach(({ titulo, fecha, descripcion }) => {
 				tabla +=	`<tr>
 										<td>${titulo}</td>
@@ -61,6 +68,10 @@
 		})
 
 		document.getElementById('agregar').onclick = () => { verVentana('./agregar.html') }
+		document.getElementById('reiniciar').onclick = () => {
+			docCookies.removeItem('pendientes')
+			window.location = 'index.html'
+		}
 		verPendientes()
 	</script>
 </html>
