@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+
+<head>
+	<meta charset="utf-8" />
+	<link href="estilos.css" rel="stylesheet" type="text/css" />
+	<title>Pendientes</title>
+	<script src="madmurphy-cookies.js"></script> <!-- Simple cookie library -->
+	<script src="Pendiente.js"></script> <!-- Pendiente's class -->
+</head>
+
+<body>
+	<h1 class="titulo">Lista de pendientes.</h1>
+	<div id="pendientes">
+		<p>&nbsp;</p>
+	</div>
+	<p class="ocultar">
+		<a href="#" id="imprimir">
+			<img src="imagenes/impresora.gif" width="48" height="48" border="0" align="absmiddle" title="Imprimir ventana" />
+		</a>
+		<input type="button" name="agregar" id="agregar" value="Agregar" />
+	</p>
+	</body>
+
+	<script language="javascript">
+		const pendientes = docCookies.hasItem('pendientes') ?
+			JSON.parse(docCookies.getItem('pendientes')) :
+			[new Pendiente('Título', 'Fecha', 'Descripción')]
+
+		function verPendientes () {
+			let tabla = '<table border>'
+			pendientes.forEach(({ titulo, fecha, descripcion }) => {
+				tabla +=	`<tr>
+										<td>${titulo}</td>
+										<td>${fecha}</td>
+										<td>${descripcion}</td>
+									</tr>`
+			})
+			tabla += '</table>'
+			document.getElementById('pendientes').innerHTML = tabla
+		}
+
+		function verVentana (url) {
+			const ventana = window.open(url, 'ventana', 'width=500, height=400')
+			ventana.focus()
+		}
+
+		const actionsForMessages = {
+			agregado () {
+				window.location = 'index.html'
+			}
+		}
+		
+		window.addEventListener('message', ({ data }) => {
+			try {
+				actionsForMessages[data]()
+			}
+			catch (error) {
+				console.log('No tenemos registrado cómo realizar ese comportamiento')
+			}
+		})
+
+		document.getElementById('agregar').onclick = () => { verVentana('./agregar.html') }
+		verPendientes()
+	</script>
+</html>

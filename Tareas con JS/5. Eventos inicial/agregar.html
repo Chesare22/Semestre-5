@@ -5,19 +5,27 @@
   <meta charset="utf-8">
   <link href="estilos.css" rel="stylesheet" type="text/css" />
   <title>Agregar actividad</title>
+  <script src="madmurphy-cookies.js"></script> <!-- Simple cookie library -->
+  <script src="Pendiente.js"></script> <!-- Pendiente's class -->
 
   <script language="javascript">
+    window.onload = () => {
+      const pendientes = docCookies.hasItem('pendientes') ? JSON.parse(docCookies.getItem('pendientes')) : []
+      if (!pendientes.length){
+        pendientes[0] = new Pendiente('Título', 'Fecha', 'Descripción')
+      }
 
-    window.onload = function () {
-      document.getElementById("agregar").onclick = function () {
-        const titulo = document.getElementById("titulo").value;
-        if (!titulo) {
-          alert(" Título no válido");
-          document.getElementById("titulo").focus();
-          return false;
+      document.getElementById('agregar').onclick = () => {
+        const { titulo, fecha, descripcion } = document.getElementById('form1')
+        if (!titulo.value) {
+          alert('Título no válido')
+          titulo.focus()
+          return false
         }
-        window.opener.pendientes.push([titulo, fecha, descripcion]);
-        window.opener.verPendientes();
+        pendientes.push(new Pendiente(titulo.value, fecha.value, descripcion.value))
+        docCookies.removeItem('pendientes')
+        docCookies.setItem('pendientes', JSON.stringify(pendientes))
+        window.opener.postMessage('agregado', '*')
       }
     }
   </script>

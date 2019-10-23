@@ -22,10 +22,14 @@
 				'Shuriken',				// Producto 4
 				'Mask'
 			]
-			const itemPrice = [12.0, 25.0, 20.0, 10.0, 15.0, 12.5]
-			const shipping = [2.0, 3.0, 2.0, 5.8, 5.5, 6.0, 1.0]
+			const itemPrice = [
+				12.0, 25.0, 20.0, 10.0, 15.0, 12.5
+			]
+			const shipping = [
+				2.0, 3.0, 2.0, 5.8, 5.5, 6.0, 1.0
+			]
 
-			function place(index) {
+			function place (index) {
 				const product = products.find(({ name }) => name === itemName[index])
 				if (product) {
 					product.increaseAmmount()
