@@ -24,7 +24,14 @@
       "no-undef": "off",
       "no-unused-vars": "off",
       "prefer-template": "error",
-      "keyword-spacing": "error",
+      "keyword-spacing": [
+        "error",
+        {
+          "before": true,
+          "after": true
+        }
+      ],
+      "no-empty": "off",
       "new-cap": [
         "error",
         {
@@ -106,13 +113,6 @@
       "quote-props": [
         "warn",
         "as-needed"
-      ],
-      "object-curly-newline": [
-        "error",
-        {
-          "multiline": true,
-          "minProperties": 4
-        }
       ],
       "semi": [
         "error",
