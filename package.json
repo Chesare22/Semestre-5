@@ -1,0 +1,141 @@
+{
+  "devDependencies": {
+    "babel-eslint": "^10.0.3",
+    "eslint": "^5.16.0",
+    "eslint-loader": "^3.0.2",
+    "eslint-plugin-html": "^6.0.0"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "browser": true
+    },
+    "extends": [
+      "eslint:recommended"
+    ],
+    "plugins": [
+      "html"
+    ],
+    "settings": {
+      "html/indent": "+2"
+    },
+    "rules": {
+      "no-console": "off",
+      "no-undef": "off",
+      "no-unused-vars": "off",
+      "prefer-template": "error",
+      "keyword-spacing": "error",
+      "new-cap": [
+        "error",
+        {
+          "properties": false
+        }
+      ],
+      "no-use-before-define": "error",
+      "camelcase": [
+        "error",
+        {
+          "properties": "never"
+        }
+      ],
+      "spaced-comment": [
+        "warn",
+        "always",
+        {
+          "exceptions": [
+            "-",
+            "*",
+            "~"
+          ]
+        }
+      ],
+      "no-multi-str": "off",
+      "valid-jsdoc": [
+        "error",
+        {
+          "requireReturn": false
+        }
+      ],
+      "max-len": [
+        "warn",
+        {
+          "code": 128
+        }
+      ],
+      "padded-blocks": [
+        "error",
+        "never"
+      ],
+      "brace-style": [
+        "error",
+        "stroustrup",
+        {
+          "allowSingleLine": true
+        }
+      ],
+      "block-spacing": [
+        "error",
+        "always"
+      ],
+      "arrow-parens": [
+        "error",
+        "as-needed"
+      ],
+      "object-curly-spacing": [
+        "error",
+        "always"
+      ],
+      "space-infix-ops": [
+        "error",
+        {
+          "int32Hint": false
+        }
+      ],
+      "eqeqeq": [
+        "error",
+        "smart"
+      ],
+      "operator-linebreak": [
+        "error",
+        "after"
+      ],
+      "space-before-function-paren": [
+        "error",
+        "always"
+      ],
+      "quote-props": [
+        "warn",
+        "as-needed"
+      ],
+      "object-curly-newline": [
+        "error",
+        {
+          "multiline": true,
+          "minProperties": 4
+        }
+      ],
+      "semi": [
+        "error",
+        "never"
+      ],
+      "quotes": [
+        "error",
+        "single",
+        {
+          "avoidEscape": true
+        }
+      ],
+      "array-bracket-newline": [
+        "error",
+        {
+          "multiline": true,
+          "minItems": 4
+        }
+      ]
+    },
+    "parserOptions": {
+      "parser": "babel-eslint",
+      "ecmaVersion": 2017
+    }
+  }
+}
