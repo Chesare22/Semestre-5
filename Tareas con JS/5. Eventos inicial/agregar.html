@@ -9,52 +9,52 @@
   <script src="Pendiente.js"></script> <!-- Pendiente's class -->
 
   <script language="javascript">
-    function formatDate (date) {
-      date = date.replace(/-/gi, '')
-      if (date.length !== 8) {
-        return {}
-      }
+function formatDate (date) {
+  date = date.replace(/-/gi, '')
+  if (date.length !== 8) {
+    return {}
+  }
 
-      try {
-        const day = Number(date.substring(0, 2))
-        const month = Number(date.substring(2, 4))
-        const year = Number(date.substring(4, 8))
-        if (year >= new Date().getFullYear() &&
-            day <= 31 && day > 0 &&
-            month <= 12 && month > 0) {
-          return { day, month, year }
-        }
-      }
-      catch (error) {}
-      return {}
+  try {
+    const day = Number(date.substring(0, 2))
+    const month = Number(date.substring(2, 4))
+    const year = Number(date.substring(4, 8))
+    if (year >= new Date().getFullYear() &&
+      day <= 31 && day > 0 &&
+      month <= 12 && month > 0) {
+      return { day, month, year }
     }
+  }
+  catch (error) {}
+  return {}
+}
 
-    window.onload = () => {
-      const pendientes = docCookies.hasItem('pendientes') ? JSON.parse(docCookies.getItem('pendientes')) : []
+window.onload = () => {
+  const pendientes = docCookies.hasItem('pendientes') ? JSON.parse(docCookies.getItem('pendientes')) : []
 
-      document.getElementById('agregar').onclick = () => {
-        const { titulo, fecha, descripcion, duracion } = document.getElementById('form1')
-        if (!titulo.value) {
-          alert('Título no válido')
-          titulo.focus()
-          return false
-        }
-        const { day, month, year } = formatDate(fecha.value)
-        if (!year) {
-          alert('Fecha no válida')
-          fecha.focus()
-          return false
-        }
-        if (!duracion.value){
-          alert('Debe seeccionar la duración')
-          return false
-        }
-        pendientes.push(new Pendiente(titulo.value, `${day}-${month}-${year}`, descripcion.value))
-        docCookies.removeItem('pendientes')
-        docCookies.setItem('pendientes', JSON.stringify(pendientes))
-        window.opener.postMessage('agregado', '*')
-      }
+  document.getElementById('agregar').onclick = () => {
+    const { titulo, fecha, descripcion, duracion } = document.getElementById('form1')
+    if (!titulo.value) {
+      alert('Título no válido')
+      titulo.focus()
+      return false
     }
+    const { day, month, year } = formatDate(fecha.value)
+    if (!year) {
+      alert('Fecha no válida')
+      fecha.focus()
+      return false
+    }
+    if (!duracion.value){
+      alert('Debe seeccionar la duración')
+      return false
+    }
+    pendientes.push(new Pendiente(titulo.value, `${day}-${month}-${year}`, descripcion.value))
+    docCookies.removeItem('pendientes')
+    docCookies.setItem('pendientes', JSON.stringify(pendientes))
+    window.opener.postMessage('agregado', '*')
+  }
+}
   </script>
 </head>
 

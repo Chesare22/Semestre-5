@@ -24,54 +24,54 @@
 	</body>
 
 	<script language="javascript">
-		const pendientes = docCookies.hasItem('pendientes') ?
-			JSON.parse(docCookies.getItem('pendientes')) :
-			[]
+const pendientes = docCookies.hasItem('pendientes') ?
+  JSON.parse(docCookies.getItem('pendientes')) :
+  []
 
-		function verPendientes () {
-			let tabla = `<table border>
+function verPendientes () {
+  let tabla = `<table border>
 										<tr>
 											<td>Título</td>
 											<td>Fecha</td>
 											<td>Descripción</td>
 										</tr>`
 										
-			pendientes.forEach(({ titulo, fecha, descripcion }) => {
-				tabla +=	`<tr>
+  pendientes.forEach(({ titulo, fecha, descripcion }) => {
+    tabla +=	`<tr>
 										<td>${titulo}</td>
 										<td>${fecha}</td>
 										<td>${descripcion}</td>
 									</tr>`
-			})
-			tabla += '</table>'
-			document.getElementById('pendientes').innerHTML = tabla
-		}
+  })
+  tabla += '</table>'
+  document.getElementById('pendientes').innerHTML = tabla
+}
 
-		function verVentana (url) {
-			const ventana = window.open(url, 'ventana', 'width=500, height=400')
-			ventana.focus()
-		}
+function verVentana (url) {
+  const ventana = window.open(url, 'ventana', 'width=500, height=400')
+  ventana.focus()
+}
 
-		const actionsForMessages = {
-			agregado () {
-				window.location = 'index.html'
-			}
-		}
+const actionsForMessages = {
+  agregado () {
+    window.location = 'index.html'
+  }
+}
 		
-		window.addEventListener('message', ({ data }) => {
-			try {
-				actionsForMessages[data]()
-			}
-			catch (error) {
-				console.log('No tenemos registrado cómo realizar ese comportamiento')
-			}
-		})
+window.addEventListener('message', ({ data }) => {
+  try {
+    actionsForMessages[data]()
+  }
+  catch (error) {
+    console.log('No tenemos registrado cómo realizar ese comportamiento')
+  }
+})
 
-		document.getElementById('agregar').onclick = () => { verVentana('./agregar.html') }
-		document.getElementById('reiniciar').onclick = () => {
-			docCookies.removeItem('pendientes')
-			window.location = 'index.html'
-		}
-		verPendientes()
+document.getElementById('agregar').onclick = () => { verVentana('./agregar.html') }
+document.getElementById('reiniciar').onclick = () => {
+  docCookies.removeItem('pendientes')
+  window.location = 'index.html'
+}
+verPendientes()
 	</script>
 </html>

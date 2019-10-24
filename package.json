@@ -17,13 +17,17 @@
       "html"
     ],
     "settings": {
-      "html/indent": "+2"
+      "html/indent": "0"
     },
     "rules": {
       "no-console": "off",
       "no-undef": "off",
       "no-unused-vars": "off",
       "prefer-template": "error",
+      "indent": [
+        "error",
+        2
+      ],
       "keyword-spacing": [
         "error",
         {
