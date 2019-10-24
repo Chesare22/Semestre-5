@@ -15,7 +15,7 @@ public class Controller {
   
   public static void main(String[] args) {
     String[] names = {
-      "Pepe", "Juan", "Andrea", "Juana", "Paquito"
+      "Pepe", "Juan", "Andrea", "Ñurca"
     };
     Controller controller = new Controller(new Model(names));
     setSingleController(controller);
