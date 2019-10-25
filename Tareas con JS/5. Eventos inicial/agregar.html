@@ -9,6 +9,8 @@
   <script src="Pendiente.js"></script> <!-- Pendiente's class -->
 
   <script language="javascript">
+/* global docCookies, Pendiente*/
+
 function formatDate (date) {
   date = date.replace(/-/gi, '')
   if (date.length !== 8) {
@@ -45,7 +47,7 @@ window.onload = () => {
       fecha.focus()
       return false
     }
-    if (!duracion.value){
+    if (!duracion.value) {
       alert('Debe seeccionar la duración')
       return false
     }

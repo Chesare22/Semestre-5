@@ -24,24 +24,24 @@
 	</body>
 
 	<script language="javascript">
-const pendientes = docCookies.hasItem('pendientes') ?
-  JSON.parse(docCookies.getItem('pendientes')) :
-  []
+/* global docCookies, Pendiente*/
+/* exported Pendiente */
+const pendientes = docCookies.hasItem('pendientes') ? JSON.parse(docCookies.getItem('pendientes')) : []
 
 function verPendientes () {
   let tabla = `<table border>
-										<tr>
-											<td>Título</td>
-											<td>Fecha</td>
-											<td>Descripción</td>
-										</tr>`
+								<tr>
+									<td>Título</td>
+									<td>Fecha</td>
+									<td>Descripción</td>
+								</tr>`
 										
   pendientes.forEach(({ titulo, fecha, descripcion }) => {
     tabla +=	`<tr>
-										<td>${titulo}</td>
-										<td>${fecha}</td>
-										<td>${descripcion}</td>
-									</tr>`
+								<td>${titulo}</td>
+								<td>${fecha}</td>
+								<td>${descripcion}</td>
+							</tr>`
   })
   tabla += '</table>'
   document.getElementById('pendientes').innerHTML = tabla

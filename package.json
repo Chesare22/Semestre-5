@@ -21,8 +21,7 @@
     },
     "rules": {
       "no-console": "off",
-      "no-undef": "off",
-      "no-unused-vars": "off",
+      "no-unused-vars": "error",
       "prefer-template": "error",
       "indent": [
         "error",
@@ -35,20 +34,22 @@
           "after": true
         }
       ],
-      "no-empty": "off",
+      "template-curly-spacing": "error",
+      "no-empty": [
+        "error",
+        {
+          "allowEmptyCatch": true
+        }
+      ],
       "new-cap": [
         "error",
         {
           "properties": false
         }
       ],
+      "space-before-blocks": "error",
       "no-use-before-define": "error",
-      "camelcase": [
-        "error",
-        {
-          "properties": "never"
-        }
-      ],
+      "camelcase": "warn",
       "spaced-comment": [
         "warn",
         "always",
@@ -96,11 +97,10 @@
         "error",
         "always"
       ],
-      "space-infix-ops": [
+      "space-infix-ops": "error",
+      "dot-location": [
         "error",
-        {
-          "int32Hint": false
-        }
+        "property"
       ],
       "eqeqeq": [
         "error",
@@ -129,13 +129,7 @@
           "avoidEscape": true
         }
       ],
-      "array-bracket-newline": [
-        "error",
-        {
-          "multiline": true,
-          "minItems": 4
-        }
-      ]
+      "arrow-spacing": "error"
     },
     "parserOptions": {
       "parser": "babel-eslint",
