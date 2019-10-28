@@ -9,33 +9,39 @@ body main {
   text-align: center;
 }
 
-article.form-container {
-  width: 40%;
-  margin-left: 30%;
+article.container {
   border: 10px solid mintcream;
   background: mintcream;
   border-radius: 8px;
   position: relative;
 }
-article.form-container header {
+article.form {
+  width: 40%;
+  margin-left: 30%;
+}
+article.table {
+  width: 60%;
+  margin-left: 20%;
+}
+article.container header {
   margin: 3%;
   font-size: 145%;
 }
-article.form-container p {
+article.container p {
   margin-block-start: 0.5em;
   margin-block-end: 0.5em;
 }
 
-article.form-container form {
+article.container form {
   display: grid;
   grid-template-columns: auto;
   padding: 0 5%;
 }
 
-article.form-container form *.margin-below {
+article.container form *.margin-below {
   margin-bottom: 5%;
 }
-article.form-container div.error-message {
+article.container div.error-message {
   width: 100%;
   height: 100%;
   background-color: crimson;
@@ -44,7 +50,7 @@ article.form-container div.error-message {
   font-size: 120%;
   top: 0;
 }
-article.form-container div.error-message div.error-tag {
+article.container div.error-message div.error-tag {
   margin: 3%;
 }
 
@@ -57,19 +63,20 @@ input[type=text]:focus {
   border-color: blue;
   outline-color: transparent;
 }
-input[type=password] {
-  padding: 12px;
-  border-radius: 5px;
-  border: 1px solid grey;
-}
-input[type=password]:focus {
-  border-color: blue;
-  outline-color: transparent;
+
+.container table.tabla-catalog {
+  width: 80%;
+  border: solid 1px black;
+  margin-left: 10%;
+  margin-bottom: 5%;
+  table-layout:fixed;
 }
 
-@media screen and (max-width: 300px) {
-  article.form-container {
-    margin: 5%;
-    width: 80%;
-  }
+.container table.tabla-catalog td {
+  border: solid 1px black;
+  vertical-align: top;
+}
+
+.container table.tabla-catalog td input[type=button] {
+  width: 100%;
 }

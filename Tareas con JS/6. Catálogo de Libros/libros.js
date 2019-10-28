@@ -44,6 +44,6 @@ window.onload = () => {
     editorial.value = ''
   
     window.localStorage.setItem('books', JSON.stringify(libros))
-    // window.open('catalog_table.html', 'catalog_table')
+    window.open('catalog_table.html', 'catalog_table')
   })
 }
