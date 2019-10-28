@@ -1,3 +1,5 @@
+/* exported deleteBook */
+
 function swap (array, x, y) {
   const helper = array[x]
   array[x] = array[y]
@@ -36,16 +38,35 @@ function buttonPressed (sortingMethod) {
   window.location = 'catalog_table.html'
 }
 
+function deleteBook (tituloParam, autorParam, editorialParam) {
+  const libros = window.localStorage.books ? JSON.parse(window.localStorage.books) : []
+  window.localStorage.setItem('books',
+    JSON.stringify(libros.filter(({ titulo, autor, editorial }) => tituloParam !== titulo.replace(/ /g, '') &&
+      autorParam !== autor.replace(/ /g, '') && editorialParam !== editorial.replace(/ /g, ''))))
+
+  window.location = 'catalog_table.html'
+}
+
 window.onload = () => {
   const tabla = document.getElementById('tabla')
-  const libros = JSON.parse(window.localStorage.books)
   console.log('Sorting method: ', window.localStorage.sortingMethod)
   console.log('Is descendent: ', isDescendent)
+  const libros = JSON.parse(window.localStorage.books)
   const sortedBooks = sortArrayByProp(libros, window.localStorage.sortingMethod, isDescendent)
   for ( let i = 0; i < sortedBooks.length; i++) {
-    let { titulo, autor, editorial } = sortedBooks[i]
+    const { titulo, autor, editorial } = sortedBooks[i]
     const fila = document.createElement('tr')
-    fila.innerHTML = `<td>${titulo}</td><td>${autor}</td><td>${editorial}</td>`
+    fila.innerHTML = `<td>${titulo}</td>
+        <td>${autor}</td>
+        <td>${editorial}</td>
+        <td>
+          <a
+            class="hide-on-print"
+            href="javascript:deleteBook('${titulo.replace(/ /g, '')}','${autor.replace(/ /g, '')}','${editorial.replace(/ /g, '')}')"
+          >
+            eliminar
+          </a>
+        </td>`
     tabla.appendChild(fila)
   }
   // Añadir event-listeners a cada celda de la primera fila

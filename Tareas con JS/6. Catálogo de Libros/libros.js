@@ -2,16 +2,6 @@ function Libro (titulo, autor, editorial) {
   this.titulo = titulo
   this.autor = autor
   this.editorial = editorial
-
-  this.escribirLibro = () => {
-    alert(`El libro ${this.titulo} de ${this.autor} trata sobre ${this.tema}`)
-  }
-
-  this.urlParams = function urlParams () {
-    return `titulo=${this.titulo}
-      &autor=${this.autor}
-      &editorial=${this.editorial}`
-  }
 }
 
 window.onload = () => {
@@ -42,7 +32,7 @@ window.onload = () => {
     titulo.value = ''
     autor.value = ''
     editorial.value = ''
-    
+
     window.open('catalog_table.html', 'catalog_table')
   })
 }

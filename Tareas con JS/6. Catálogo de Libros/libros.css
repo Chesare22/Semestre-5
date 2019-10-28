@@ -80,3 +80,19 @@ input[type=text]:focus {
 .container table.tabla-catalog td input[type=button] {
   width: 100%;
 }
+
+@media print {
+  .hide-on-print {
+    visibility: hidden;
+  }
+  
+  article.table {
+    width: 90%;
+    margin-left: 5%;
+  }
+
+  .container table.tabla-catalog {
+    width: 95%;
+    margin-left: 2.5%;
+  }
+}
