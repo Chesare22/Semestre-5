@@ -1,5 +1,3 @@
-const libros = window.localStorage.books ? JSON.parse(window.localStorage.books) : []
-
 function Libro (titulo, autor, editorial) {
   this.titulo = titulo
   this.autor = autor
@@ -36,14 +34,15 @@ window.onload = () => {
       editorial.focus()
       return false
     }
-  
+
+    const libros = window.localStorage.books ? JSON.parse(window.localStorage.books) : []
     libros.push(new Libro(titulo.value, autor.value, editorial.value))
+    window.localStorage.setItem('books', JSON.stringify(libros))
   
     titulo.value = ''
     autor.value = ''
     editorial.value = ''
-  
-    window.localStorage.setItem('books', JSON.stringify(libros))
+    
     window.open('catalog_table.html', 'catalog_table')
   })
 }
