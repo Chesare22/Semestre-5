@@ -22,7 +22,10 @@
     "rules": {
       "no-console": "off",
       "no-unused-vars": "error",
+      "no-var": "error",
+      "no-trailing-spaces": "error",
       "prefer-template": "error",
+      "prefer-const": "error",
       "indent": [
         "error",
         2
@@ -78,18 +81,16 @@
         "error",
         "never"
       ],
-      "brace-style": [
-        "error",
-        "stroustrup",
-        {
-          "allowSingleLine": true
-        }
-      ],
+      "brace-style": "error",
       "block-spacing": [
         "error",
         "always"
       ],
       "arrow-parens": [
+        "error",
+        "as-needed"
+      ],
+      "arrow-body-style": [
         "error",
         "as-needed"
       ],
