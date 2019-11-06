@@ -7,6 +7,11 @@
 
 // function Suma ($a, $b) { return ($a + $b); };
 
+include "funciones.php";
+$sql = "SELECT usuario, contrasena FROM usuarios WHERE usuario ='" . $_REQUEST["usuario"] . "'";
+ejecutarSQL("localhost", "root", "root", "inventarios", $sql)
+
+
 header("location: menu.php");
 
 ?>
