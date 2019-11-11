@@ -18,10 +18,10 @@ mysqli_close($conexion);
 
 if (mysqli_num_rows($resultado) > 0) {
 	//Si hay registro reenviar a la página menu.php
-	header("location: menu.php");
+	//header("location: menu.php");
 } else {
-	//Sino redirigir a la página index.html 
-	header("location: index.php");
+	//Si no, redirigir a la página index.html 
+//	header("location: index.php");
 }
 
 ?>
