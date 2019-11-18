@@ -7,8 +7,8 @@ $basedatos = "tienda";
 
 $conexion = mysqli_connect($servidor, $usuario, $contrasena, $basedatos);
 if (!$conexion) {
-    die("Fallo: " . mysqli_connect_error());
-}
+  die("Fallo: " . mysqli_connect_error());
+}	
 
 //Completar la sentencia SQL
 $sql = "SELECT usuario, contrasena FROM usuarios WHERE usuario ='" . $_REQUEST["usuario"] . "' AND contrasena ='" . $_REQUEST["contrasena"] . "'";

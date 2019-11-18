@@ -6,13 +6,11 @@
 	<style></style>
 	
 	<script>
-	window.onload = function () {
-	
-		document.forma.cancelar.onclick = function() {
-			history.back();
-		}
-	
-	}
+window.onload = function () {
+  document.forma.cancelar.onclick = function () {
+    history.back()
+  }
+}
 	</script>
 	
 </head>

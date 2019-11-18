@@ -29,31 +29,37 @@
 </table>
 </form>
 <script>
-	formulario.onsubmit = function(){
-		event.preventDefault();//Evita que se haga el envio del formulario
-		let stringBuilder = formulario.usuario.name+"="+formulario.usuario.value +
-							"&"+ formulario.contrasena.name+"="+formulario.contrasena.value;
-		let xmlhttp = new XMLHttpRequest();
-		xmlhttp.onreadystatechange = function() {
-			if (this.readyState == 4 && this.status == 200) {
-				handleResponse(this.responseText);
-			}
-		}
-		xmlhttp.open("get", "validar.php?" + stringBuilder, true);
-		xmlhttp.send();
-	}
+/* global formulario */
 
-	function handleResponse(jsonResponse){
-		let response = JSON.parse(jsonResponse);
-		if(response.ok){//Se da acceso a la pagina menu.php
-			this.document.location = response.mensaje;
-		}else{//Se crea el mensaje
-			let messageContainer = document.createElement('div');
-			messageContainer.innerHTML = response.mensaje;
-			formulario.appendChild(messageContainer);
-			setTimeout(function(){messageContainer.remove();}, 3000);
-		}
-	}
+function handleResponse (jsonResponse) {
+  const response = JSON.parse(jsonResponse)
+  if (response.ok) {
+    this.document.location = response.mensaje
+  } else {
+    const messageContainer = document.createElement('div')
+    messageContainer.innerHTML = response.mensaje
+    formulario.appendChild(messageContainer)
+    setTimeout(function () {
+      messageContainer.remove()
+    }, 3000)
+  }
+}
+
+formulario.onsubmit = function () {
+  event.preventDefault()// Evita que se haga el envio del formulario
+  const xmlhttp = new XMLHttpRequest()
+  xmlhttp.onreadystatechange = function () {
+    if (this.readyState === 4 && this.status === 200) {
+      handleResponse(this.responseText)
+    }
+  }
+
+  const { usuario: user, contrasena: password } = formulario
+  const queryParams = `${user.name}=${user.value}&${password.name}=${password.value}`
+  xmlhttp.open('get', `validar.php?${queryParams}`, true)
+  xmlhttp.send()
+}
+
 </script>
 </body>
 </html>

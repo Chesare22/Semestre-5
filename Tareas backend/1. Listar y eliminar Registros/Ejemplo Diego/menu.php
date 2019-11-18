@@ -35,45 +35,47 @@
 	<input type="submit" value="Delete" name="Delete">
 </form>
 <script>
-	Formulario.onsubmit = function(){
-		event.preventDefault();
-		let choice = confirm("¿Desea borrar los registros seleccionados?");
-		if(choice){
-			let ids = getIdSelected();
-			console.log(ids);
-			if(ids.length>0){
-				ajax(ids);
-			}
-		}
-	}
+/* global Formulario */
 
-	function ajax(idArray){
-		let xmlhttp = new XMLHttpRequest();
-		xmlhttp.onreadystatechange = function() {
-			if (this.readyState == 4 && this.status == 200) {
-				handleResponse(this.responseText);
-			}
-		}
-		let stringBuilder = "usuario="+ idArray;
-		xmlhttp.open("get", "deleteUsers.php?" + stringBuilder, true);
-		xmlhttp.send();
-	}
+function getIdSelected () {
+  const checkArray = document.getElementsByName('usuario')
+  const ids = new Array()
+  checkArray.forEach(({ checked, value }) => {
+    if (checked) {
+      ids.push(parseInt(value))
+    }
+  })
+  return ids
+}
 
-	function handleResponse(response){
-		this.document.location = response;
-	}
+function handleResponse (response) {
+  this.document.location = response
+}
 
-	function getIdSelected(){
-		let checkArray = document.getElementsByName("usuario");
-		let ids= new Array();
-		checkArray.forEach(element => {
-			if(element.checked){
-				ids.push(parseInt(element.value));
-			}
-		});
-		return ids;
-	}
-	
+function ajax (idArray) {
+  const xmlhttp = new XMLHttpRequest()
+  xmlhttp.onreadystatechange = function () {
+    if (this.readyState === 4 && this.status === 200) {
+      handleResponse(this.responseText)
+    }
+  }
+  const stringBuilder = `usuario=${idArray}`
+  xmlhttp.open('get', `deleteUsers.php?${stringBuilder}`, true)
+  xmlhttp.send()
+}
+
+Formulario.onsubmit = function () {
+  event.preventDefault()
+  const choice = confirm('¿Desea borrar los registros seleccionados?')
+  if (choice) {
+    const ids = getIdSelected()
+    console.log(ids)
+    if (ids.length > 0) {
+      ajax(ids)
+    }
+  }
+}
+
 </script>
 <?php include("pie.php"); ?>
 </body>
