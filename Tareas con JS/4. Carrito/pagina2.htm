@@ -14,73 +14,74 @@
 		<p>
 			<form name="orderform">
 				<script language="JavaScript">
+/* global docCookies objectsToProducts */
+/* exported removeSelected decreaseProductById */
 
-					function killCookies() {
-						const killDate = new Date('January 1, 1970')
-						document.cookie = `products=[];expires=${killDate.toGMTString()}`
-						products = []
-						window.location = 'pagina2.htm'
-					}
+let products = docCookies.hasItem('products') ? objectsToProducts(JSON.parse(docCookies.getItem('products'))) : []
 
-					function refresh() {
-						docCookies.removeItem('products')
-						docCookies.setItem('products', JSON.stringify(products))
-						window.location = 'pagina2.htm'
-					}
+function killCookies () {
+  const killDate = new Date('January 1, 1970')
+  document.cookie = `products=[];expires=${killDate.toGMTString()}`
+  products = []
+  window.location = 'pagina2.htm'
+}
 
-					function removeSelected() {
-						let orderboxes = document.orderform.orderboxes
-						if (orderboxes) {
-							// Para que el forEach funcione, orderboxes debe ser un NodeList o un arreglo
-							orderboxes = orderboxes instanceof RadioNodeList ? orderboxes : [orderboxes]
-							orderboxes.forEach(({ value, checked }) => {
-								value = Number(value)
-								if (checked) {
-									products = products.filter(({ id }) => id !== value)
-								}
-							});
-						}
-						else {
-							killCookies()
-						}
-						refresh()
-					}
+function refresh () {
+  docCookies.removeItem('products')
+  docCookies.setItem('products', JSON.stringify(products))
+  window.location = 'pagina2.htm'
+}
 
-					function decreaseProductById(id) {
-						const product = products.find(product => product.id === id)
-						product.decreaseAmmount()
+function removeSelected () {
+  let orderboxes = document.orderform.orderboxes
+  if (orderboxes) {
+    // Para que el forEach funcione, orderboxes debe ser un NodeList o un arreglo
+    orderboxes = orderboxes instanceof RadioNodeList ? orderboxes : [orderboxes]
+    orderboxes.forEach(({ value, checked }) => {
+      value = Number(value)
+      if (checked) {
+        products = products.filter(({ id }) => id !== value)
+      }
+    })
+  } else {
+    killCookies()
+  }
+  refresh()
+}
 
-						if (product.ammount === 0) {
-							products = products.filter(product => product.id !== id)
-						}
+function decreaseProductById (id) {
+  const product = products.find(product => product.id === id)
+  product.decreaseAmmount()
 
-						refresh()
-					}
+  if (product.ammount === 0) {
+    products = products.filter(product => product.id !== id)
+  }
 
-					let products = docCookies.hasItem('products') ? objectsToProducts(JSON.parse(docCookies.getItem('products'))) : []
-					if (!docCookies.hasItem('products')) {
-						docCookies.setItem('products', '[]')
-					}
+  refresh()
+}
 
-					if (products.length < 1) {
-						document.write('<h4>No hay elementos en el carrito. Agrega algunos utilizando el enlace</h4>')
-					}
-					else {
-						let total = 0
+if (!docCookies.hasItem('products')) {
+  docCookies.setItem('products', '[]')
+}
 
-						products.forEach(({ id, name, price, shipping, ammount }) => {
-							document.write(`<input type="checkbox" name="orderboxes" value="${id}">`)
-							document.write(`<b>${name}</b> &nbsp;&nbsp;`)
-							document.write(`<i><b>precio por producto: $${price}</b></i> &nbsp;&nbsp;`)
-							document.write(`envío: $${shipping} `)
-							document.write(`<i>cantidad de productos: ${ammount}</i> &nbsp;&nbsp;`)
-							document.write(`<a href="javascript:decreaseProductById(${id})">quitar un elemento</a><br><br>`)
+if (products.length < 1) {
+  document.write('<h4>No hay elementos en el carrito. Agrega algunos utilizando el enlace</h4>')
+} else {
+  let total = 0
 
-							total += (price + shipping) * ammount
-						})
+  products.forEach(({ id, name, price, shipping, ammount }) => {
+    document.write(`<input type="checkbox" name="orderboxes" value="${id}">`)
+    document.write(`<b>${name}</b> &nbsp;&nbsp;`)
+    document.write(`<i><b>precio por producto: $${price}</b></i> &nbsp;&nbsp;`)
+    document.write(`envío: $${shipping} `)
+    document.write(`<i>cantidad de productos: ${ammount}</i> &nbsp;&nbsp;`)
+    document.write(`<a href="javascript:decreaseProductById(${id})">quitar un elemento</a><br><br>`)
 
-						document.write(`Total - $${total}`)
-					}
+    total += (price + shipping) * ammount
+  })
+
+  document.write(`Total - $${total}`)
+}
 				</script>
 				<br><br>
 				<input type="button" onclick="removeSelected()" value="Eliminar elementos seleccionados">
