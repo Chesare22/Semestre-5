@@ -2,14 +2,15 @@
 	include('funciones.php');
 
 	function generarTabla(){
-		$sql = "SELECT id, usuario, nombre FROM usuarios ORDER BY usuario ASC";
+		$sql = "SELECT id, usuario, nombre, rol FROM usuarios ORDER BY usuario ASC";
 		$result = ConsultaSQL($sql);//Arreglo de usuarios
 		echo "<table class=\"collapsed\">\n";
-		echo "<tr><th></th><th>Usuario</th><th>Nombre</th></tr>\n";
+		echo "<tr><th>Eliminar</th><th>Usuario</th><th>Nombre</th><th>Rol</th></tr>\n";
 		foreach($result as $row)
 			echo "<tr>\n<td><input type=\"checkbox\" name=\"usuario\" value=\"" . $row["id"] . "\"></td>\n" . 
-				"<td>" . $row["usuario"] . "</td>\n" . 
-				"<td>" . $row["nombre"] . "</td>\n</tr>\n";
+				"<td><button class=\"invisible\" name=\"edit\" value=\"" . $row["id"] . "\">" . $row["usuario"] . "</button></td>\n" . 
+				"<td><button class=\"invisible\" name=\"edit\" value=\"" . $row["id"] . "\">" . $row["nombre"] . "</button></td>\n" .
+				"<td><button class=\"invisible\" name=\"edit\" value=\"" . $row["id"] . "\">" . $row["rol"] . "</button></td>\n</tr>\n";
 		echo "</table>";
 	}
 
@@ -25,6 +26,11 @@
     table.collapsed, th, td {
       border: 1px solid black;
     }
+
+    button.invisible {
+      border: none;
+      background-color: transparent;
+    }
 	</style>
 	
 </head>
@@ -39,6 +45,18 @@
 </form>
 <script>
 /* global Formulario */
+
+window.onload = () => {
+  // Add 'onclick' to each button
+  if (Formulario.edit) {
+    Formulario.edit.forEach(button => {
+      button.addEventListener('click', () => {
+        event.preventDefault()// Evita que se haga el envio del formulario
+        this.document.location = `editUser.php?id=${button.value}`
+      })
+    })
+  }
+}
 
 function getIdSelected () {
   const checkArray = document.getElementsByName('usuario')
