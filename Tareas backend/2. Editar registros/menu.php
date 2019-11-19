@@ -90,7 +90,6 @@ Formulario.onsubmit = function () {
   const choice = confirm('¿Desea borrar los registros seleccionados?')
   if (choice) {
     const ids = getIdSelected()
-    console.log(ids)
     if (ids.length > 0) {
       ajax(ids)
     }
