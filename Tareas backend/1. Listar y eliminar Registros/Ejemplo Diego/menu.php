@@ -4,7 +4,7 @@
 	function generarTabla(){
 		$sql = "SELECT id, usuario, nombre FROM usuarios ORDER BY usuario ASC";
 		$result = ConsultaSQL($sql);//Arreglo de usuarios
-		echo "<table>\n";
+		echo "<table class=\"collapsed\">\n";
 		echo "<tr><th></th><th>Usuario</th><th>Nombre</th></tr>\n";
 		foreach($result as $row)
 			echo "<tr>\n<td><input type=\"checkbox\" name=\"usuario\" value=\"" . $row["id"] . "\"></td>\n" . 
@@ -19,9 +19,12 @@
 	<title>Aplicación</title>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<style>
-		table {
-			border: solid 1px;
+		table.collapsed {
+      border-collapse: collapse;
 		}
+    table.collapsed, th, td {
+      border: 1px solid black;
+    }
 	</style>
 	
 </head>
@@ -39,7 +42,7 @@
 
 function getIdSelected () {
   const checkArray = document.getElementsByName('usuario')
-  const ids = new Array()
+  const ids = []
   checkArray.forEach(({ checked, value }) => {
     if (checked) {
       ids.push(parseInt(value))
@@ -59,8 +62,8 @@ function ajax (idArray) {
       handleResponse(this.responseText)
     }
   }
-  const stringBuilder = `usuario=${idArray}`
-  xmlhttp.open('get', `deleteUsers.php?${stringBuilder}`, true)
+  const params = `ids=${idArray}`
+  xmlhttp.open('get', `deleteUsers.php?${params}`, true)
   xmlhttp.send()
 }
 

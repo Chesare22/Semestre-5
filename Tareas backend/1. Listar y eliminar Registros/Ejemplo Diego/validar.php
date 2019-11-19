@@ -23,7 +23,6 @@ if (mysqli_num_rows($resultado) > 0) {
 	$ok = false;
 	$mensaje = "Usuario o contraseña incorrecta"; 
 }
-
 //Se envia la respuesta
 echo json_encode(
 	array(

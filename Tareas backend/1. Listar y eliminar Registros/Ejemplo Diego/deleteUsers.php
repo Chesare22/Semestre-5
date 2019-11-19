@@ -1,9 +1,9 @@
 <?php
 include 'funciones.php';
 
-$userIdArray = explode(",", $_GET["usuario"]);
+$userIdArray = explode(",", $_GET["ids"]);
 $contador = count ($userIdArray);
-for ($i = 0; $i <$contador; $i++) {
+for ($i = 0; $i < $contador; $i++) {
 
 	$sentenciaSQL = "DELETE FROM usuarios WHERE id = " . $userIdArray[$i];
 	EjecutarSQL ($sentenciaSQL);

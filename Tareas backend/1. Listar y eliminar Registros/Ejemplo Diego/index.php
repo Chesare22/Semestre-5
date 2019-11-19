@@ -32,12 +32,12 @@
 /* global formulario */
 
 function handleResponse (jsonResponse) {
-  const response = JSON.parse(jsonResponse)
-  if (response.ok) {
-    this.document.location = response.mensaje
+  const { ok, mensaje } = JSON.parse(jsonResponse)
+  if (ok) {
+    this.document.location = mensaje
   } else {
     const messageContainer = document.createElement('div')
-    messageContainer.innerHTML = response.mensaje
+    messageContainer.innerHTML = mensaje
     formulario.appendChild(messageContainer)
     setTimeout(function () {
       messageContainer.remove()
@@ -50,6 +50,7 @@ formulario.onsubmit = function () {
   const xmlhttp = new XMLHttpRequest()
   xmlhttp.onreadystatechange = function () {
     if (this.readyState === 4 && this.status === 200) {
+      console.log(this.responseText)
       handleResponse(this.responseText)
     }
   }

@@ -1,7 +1,5 @@
 <?php
 
-
-
 function EjecutarSQL ($sentenciaSQL){
     
     $conexion = getDBConnection();
@@ -22,7 +20,7 @@ function ConsultaSQL ($sentenciaSQL){
 
     $resultado = mysqli_query($conexion, $sentenciaSQL);
     
-	for ($registros = array (); $fila = mysqli_fetch_assoc($resultado); $registros[] = $fila);	
+	for ($registros = array (); $fila = mysqli_fetch_assoc($resultado); $registros[] = $fila);
 	mysqli_close($conexion);
 	return $registros;
 };
