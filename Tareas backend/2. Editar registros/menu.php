@@ -61,9 +61,9 @@ window.onload = () => {
 function getIdSelected () {
   const checkArray = document.getElementsByName('usuario')
   const ids = []
-  checkArray.forEach(({ checked, value }) => {
+  checkArray.forEach(({ checked, value: id }) => {
     if (checked) {
-      ids.push(parseInt(value))
+      ids.push(parseInt(id))
     }
   })
   return ids

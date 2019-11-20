@@ -29,9 +29,33 @@ function printTable(){
 
 <script>
 /* global formulario */
+
+function ajax (params) {
+  const xmlhttp = new XMLHttpRequest()
+  xmlhttp.onreadystatechange = function () {
+    if (this.readyState === 4 && this.status === 200) {
+      document.location = 'menu.php'
+    }
+  }
+  xmlhttp.open('get', `saveUser.php?${params}`, true)
+  xmlhttp.send()
+}
+
 formulario.onsubmit = () => {
   event.preventDefault()
-  const { usuario, nombre, rol } = formulario
-  console.log(`${usuario}  ${nombre}  ${rol}`)
+  const {
+    usuario: {
+      value: user
+    },
+    nombre: {
+      value: name
+    },
+    rol: {
+      value: role
+    },
+  } = formulario
+  const id = new URL(window.location).searchParams.get('id')
+  const params = `user=${user}&name=${name}&role=${role}&id=${id}`
+  ajax(params)
 }
 </script>
